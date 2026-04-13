@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalkMitra - My Profile</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .profile-page {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 16px 14px 110px;
+    }
+
+    .profile-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 22px;
+      margin-bottom: 16px;
+    }
+
+    .profile-topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.2s ease;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .profile-title h2 {
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
+
+    .profile-title p {
+      font-size: 12px;
+      color: #b8c0cc;
+    }
+
+    .top-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 213, 79, 0.14);
+      color: #ffd54f;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 213, 79, 0.2);
+      white-space: nowrap;
+    }
+
+    .profile-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 22px 18px 18px;
+      margin-bottom: 16px;
+    }
+
+    .profile-hero::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 213, 79, 0.22), transparent 70%);
+      z-index: 0;
+    }
+
+    .profile-hero-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .profile-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .profile-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #ffd54f, #ffb300);
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 800;
+      box-shadow: 0 12px 24px rgba(255, 193, 7, 0.18);
+    }
+
+    .profile-online-dot {
+      position: absolute;
+      right: -2px;
+      bottom: -2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #22c55e;
+      border: 3px solid #0f131b;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.45);
+    }
+
+    .profile-main-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .profile-main-info h1 {
+      font-size: 25px;
+      margin-bottom: 4px;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    .profile-main-info p {
+      color: #c5ccd7;
+      font-size: 13px;
+      margin-bottom: 10px;
+      word-break: break-word;
+    }
+
+    .profile-mini-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .profile-mini-badge {
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+      color: #e8ecf3;
+    }
+
+    .profile-mini-badge.gold {
+      background: rgba(255, 213, 79, 0.14);
+      color: #ffd54f;
+      border-color: rgba(255, 213, 79, 0.22);
+    }
+
+    .profile-mini-badge.green {
+      background: rgba(34, 197, 94, 0.12);
+      color: #5ee38c;
+      border-color: rgba(34, 197, 94, 0.2);
+    }
+
+    .profile-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .profile-stat-card {
+      padding: 16px 12px;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-stat-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(255,255,255,0.03), transparent);
+      pointer-events: none;
+    }
+
+    .profile-stat-card h3 {
+      color: #ffd54f;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .profile-stat-card p {
+      color: #b8c0cc;
+      font-size: 12px;
+    }
+
+    .profile-section {
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .profile-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .profile-section-header h3 {
+      font-size: 20px;
+    }
+
+    .profile-section-header span {
+      color: #ffd54f;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .profile-detail-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .profile-detail-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .profile-detail-left {
+      min-width: 0;
+    }
+
+    .profile-detail-left h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .profile-detail-left p {
+      font-size: 12px;
+      color: #aeb7c3;
+    }
+
+    .profile-detail-value {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+      word-break: break-word;
+    }
+
+    .highlight-value {
+      color: #ffd54f;
+    }
+
+    .action-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .profile-action-btn {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .profile-action-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .profile-action-btn.gold {
+      background: linear-gradient(135deg, #ffd54f, #ffb300);
+      color: #111;
+      box-shadow: 0 12px 24px rgba(255, 193, 7, 0.16);
+    }
+
+    .profile-action-btn.dark {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .profile-action-btn.red {
+      background: rgba(239, 68, 68, 0.12);
+      color: #ff7f7f;
+      border: 1px solid rgba(239, 68, 68, 0.18);
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .quick-link-card {
+      padding: 16px 14px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #fff;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .quick-link-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .quick-link-card h4 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .quick-link-card p {
+      font-size: 12px;
+      color: #b8c0cc;
+      line-height: 1.5;
+    }
+
+    .profile-note {
+      margin-top: 14px;
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(255, 213, 79, 0.08);
+      border: 1px solid rgba(255, 213, 79, 0.14);
+      color: #e9dfb0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 540px) {
+      .profile-hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .profile-stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .profile-detail-value {
+        text-align: left;
+      }
+
+      .quick-links {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-topbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .top-badge {
+        width: fit-content;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-bg">
+    <span class="float-emoji e1">💛</span>
+    <span class="float-emoji e2">💬</span>
+    <span class="float-emoji e3">📞</span>
+    <span class="float-emoji e4">❤️</span>
+    <span class="float-emoji e5">💬</span>
+    <span class="float-emoji e6">📱</span>
+    <span class="float-emoji e7">💕</span>
+    <span class="float-emoji e8">☎️</span>
+    <span class="float-emoji e9">💭</span>
+    <span class="float-emoji e10">💛</span>
+  </div>
+
+  <div class="bg-glow glow-one"></div>
+  <div class="bg-glow glow-two"></div>
+  <div class="bg-glow glow-three"></div>
+
+  <div class="profile-page">
+    <section class="profile-topbar glass">
+      <div class="profile-topbar-left">
+        <button class="back-btn" onclick="window.location.href='index.html'">←</button>
+        <div class="profile-title">
+          <h2>My Profile</h2>
+          <p>Manage your TalkMitra account</p>
+        </div>
+      </div>
+      <div class="top-badge">Premium UI</div>
+    </section>
+
+    <section class="profile-hero glass">
+      <div class="profile-hero-inner">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar" id="profileAvatar">U</div>
+          <span class="profile-online-dot"></span>
+        </div>
+
+        <div class="profile-main-info">
+          <h1 id="profileName">User</h1>
+          <p id="profileEmail">user@email.com</p>
+
+          <div class="profile-mini-badges">
+            <span class="profile-mini-badge gold">Verified Account</span>
+            <span class="profile-mini-badge green">Active User</span>
+            <span class="profile-mini-badge">TalkMitra Member</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-stats-grid">
+      <div class="profile-stat-card glass">
+        <h3>₹<span id="profileBalance">0</span></h3>
+        <p>Wallet Balance</p>
+      </div>
+      <div class="profile-stat-card glass">
+        <h3>12</h3>
+        <p>Total Chats</p>
+      </div>
+      <div class="profile-stat-card glass">
+        <h3>4.8★</h3>
+        <p>User Rating</p>
+      </div>
+    </section>
+
+    <section class="profile-section glass">
+      <div class="profile-section-header">
+        <h3>Account Details</h3>
+        <span>Live Data</span>
+      </div>
+
+      <div class="profile-detail-list">
+        <div class="profile-detail-item">
+          <div class="profile-detail-left">
+            <h4>Full Name</h4>
+            <p>Your registered display name</p>
+          </div>
+          <div class="profile-detail-value" id="profileNameRow">User</div>
+        </div>
+
+        <div class="profile-detail-item">
+          <div class="profile-detail-left">
+            <h4>Email Address</h4>
+            <p>Your login email</p>
+          </div>
+          <div class="profile-detail-value" id="profileEmailRow">user@email.com</div>
+        </div>
+
+        <div class="profile-detail-item">
+          <div class="profile-detail-left">
+            <h4>Wallet Status</h4>
+            <p>Current usable balance</p>
+          </div>
+          <div class="profile-detail-value highlight-value">₹<span id="profileBalanceRow">0</span></div>
+        </div>
+
+        <div class="profile-detail-item">
+          <div class="profile-detail-left">
+            <h4>Account Status</h4>
+            <p>Your TalkMitra account state</p>
+          </div>
+          <div class="profile-detail-value">Active</div>
+        </div>
+      </div>
+
+      <div class="profile-note">
+        Your profile is connected with TalkMitra login system. Wallet balance and user details load automatically after login.
+      </div>
+    </section>
+
+    <section class="profile-section glass">
+      <div class="profile-section-header">
+        <h3>Quick Access</h3>
+        <span>Shortcuts</span>
+      </div>
+
+      <div class="quick-links">
+        <a href="index.html" class="quick-link-card">
+          <h4>🏠 Home</h4>
+          <p>Go back to host browsing and main home page.</p>
+        </a>
+
+        <div class="quick-link-card" onclick="openWalletPopup()">
+          <h4>💰 Wallet</h4>
+          <p>Open wallet section from the home page quickly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-section glass">
+      <div class="profile-section-header">
+        <h3>Actions</h3>
+        <span>Manage</span>
+      </div>
+
+      <div class="action-grid">
+        <button class="profile-action-btn gold" onclick="window.location.href='index.html'">Go to Home</button>
+        <button class="profile-action-btn dark" onclick="showComingSoon()">Edit Profile</button>
+        <button class="profile-action-btn dark" onclick="showComingSoon()">View Activity</button>
+        <button class="profile-action-btn red" id="logoutBtn">Logout</button>
+      </div>
+    </section>
+
+    <nav class="bottom-nav glass">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="#" class="nav-link">Chats</a>
+      <a href="#" class="nav-link">Calling</a>
+      <a href="#" class="nav-link" onclick="openWalletPopup()">Wallet</a>
+      <a href="profile.html" class="nav-link active">Profile</a>
+    </nav>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://vugexzusziumzzgturum.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1Z2V4enVzeml1bXp6Z3R1cnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3OTk3ODYsImV4cCI6MjA5MTM3NTc4Nn0.CYChM5hKWj_Bk2I_osLUcoWGHE0OeeBDHEh1Vju6dkM";
+
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove("hidden");
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 2200);
+    }
+
+    function showComingSoon() {
+      showToast("Ye feature next step me connect karenge.");
+    }
+
+    function openWalletPopup() {
+      showToast("Wallet home page se open hoga.");
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 700);
+    }
+
+    async function loadProfile() {
+      try {
+        const { data, error } = await sb.auth.getUser();
+
+        if (error || !data.user) {
+          window.location.href = "index.html";
+          return;
+        }
+
+        const user = data.user;
+        const email = user.email || "No email";
+        const name =
+          user.user_metadata?.full_name ||
+          user.user_metadata?.name ||
+          "User";
+
+        document.getElementById("profileName").textContent = name;
+        document.getElementById("profileEmail").textContent = email;
+        document.getElementById("profileNameRow").textContent = name;
+        document.getElementById("profileEmailRow").textContent = email;
+        document.getElementById("profileAvatar").textContent = name.charAt(0).toUpperCase();
+
+        const { data: wallet } = await sb
+          .from("user_wallets")
+          .select("*")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        const balance = wallet?.balance || 0;
+
+        document.getElementById("profileBalance").textContent = balance;
+        document.getElementById("profileBalanceRow").textContent = balance;
+      } catch (err) {
+        console.error(err);
+        showToast("Profile load failed");
+      }
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      try {
+        await sb.auth.signOut();
+        showToast("Logout successful");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 700);
+      } catch (err) {
+        console.error(err);
+        showToast("Logout failed");
+      }
+    });
+
+    loadProfile();
+  </script>
+</body>
+</html>
