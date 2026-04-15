@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Host Earnings - TalkMitra</title>
+  <link rel="stylesheet" href="assets/host-style.css" />
+</head>
+<body>
+  <div class="page">
+
+    <!-- TOP -->
+    <div class="topbar glass-card">
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="TalkMitra Logo">
+      </div>
+      <div>
+        <div class="brand-title">TalkMitra</div>
+        <div class="brand-sub">Earnings Panel</div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero glass-card">
+      <div class="badge">Earning Overview</div>
+      <h1>Your <span>Earnings</span></h1>
+      <p>Track your chats, calls and total earnings.</p>
+
+      <div class="chip-row">
+        <div class="chip">Chat ₹2/min</div>
+        <div class="chip">Call ₹5/min</div>
+        <div class="chip" id="planChip">Plan</div>
+      </div>
+    </div>
+
+    <!-- TOTAL -->
+    <div class="glass-card card">
+      <h2 class="section-title">Total Earnings</h2>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value" id="totalEarn">₹0</div>
+          <div class="stat-label">Total Earned</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="chatEarn">₹0</div>
+          <div class="stat-label">Chat Earnings</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="callEarn">₹0</div>
+          <div class="stat-label">Call Earnings</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="glass-card card">
+      <h2 class="section-title">Activity Summary</h2>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Total Chats</span>
+          <strong id="totalChats">0</strong>
+        </div>
+        <div class="info-item">
+          <span>Total Calls</span>
+          <strong id="totalCalls">0</strong>
+        </div>
+        <div class="info-item">
+          <span>Plan Share</span>
+          <strong id="planShare">0%</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACK -->
+    <div class="glass-card card">
+      <button class="main-btn" onclick="goDashboard()">Back to Dashboard</button>
+    </div>
+
+  </div>
+
+  <script>
+    function goDashboard(){
+      window.location.href = "dashboard.html";
+    }
+
+    function loadEarnings(){
+      const host = JSON.parse(localStorage.getItem("talkmitra_host"));
+
+      if(!host){
+        window.location.href = "login.html";
+        return;
+      }
+
+      // plan %
+      let percent = host.plan === "premium" ? 60 : 40;
+
+      document.getElementById("planChip").innerText =
+        host.plan === "premium" ? "Premium (60%)" : "Free (40%)";
+
+      document.getElementById("planShare").innerText = percent + "%";
+
+      // dummy data (baad me real karenge)
+      let chats = 30;
+      let calls = 15;
+
+      let chatEarn = chats * 2;
+      let callEarn = calls * 5;
+
+      let total = (chatEarn + callEarn) * (percent / 100);
+
+      document.getElementById("totalChats").innerText = chats;
+      document.getElementById("totalCalls").innerText = calls;
+
+      document.getElementById("chatEarn").innerText = "₹" + chatEarn;
+      document.getElementById("callEarn").innerText = "₹" + callEarn;
+      document.getElementById("totalEarn").innerText = "₹" + total;
+    }
+
+    loadEarnings();
+  </script>
+</body>
+</html>

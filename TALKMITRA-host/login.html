@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalkMitra Host Login</title>
+  <link rel="stylesheet" href="assets/host-style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="topbar glass-card">
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="TalkMitra Logo" />
+      </div>
+      <div>
+        <div class="brand-title">TalkMitra</div>
+        <div class="brand-sub">Host Login Panel</div>
+      </div>
+    </div>
+
+    <div class="hero glass-card">
+      <div class="badge">Approved Hosts Only</div>
+      <h1>Login to Your <span>Host Dashboard</span></h1>
+      <p>
+        Enter your registered email and password. If your account is not approved yet,
+        you will be taken to the pending approval page.
+      </p>
+
+      <div class="chip-row">
+        <div class="chip">Admin Approval Check</div>
+        <div class="chip">Plan Status</div>
+        <div class="chip">Dashboard Access</div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Host Login</h2>
+      <p class="section-subtitle">
+        Use the same email and password you used during registration.
+      </p>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter registered email" />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" />
+        </div>
+
+        <button class="main-btn" id="loginBtn">Login</button>
+        <div class="status-box" id="statusMsg"></div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">New Host?</h2>
+      <p class="section-subtitle">
+        If you do not have a host account yet, create one first from the registration page.
+      </p>
+      <button class="secondary-btn" onclick="goToRegister()">Go to Registration</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://vugexzusziumzzgturum.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1Z2V4enVzeml1bXp6Z3R1cnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3OTk3ODYsImV4cCI6MjA5MTM3NTc4Nn0.CYChM5hKWj_Bk2I_osLUcoWGHE0OeeBDHEh1Vju6dkM";
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const loginBtn = document.getElementById("loginBtn");
+    const statusMsg = document.getElementById("statusMsg");
+
+    function goToRegister() {
+      window.location.href = "register.html";
+    }
+
+    function setStatus(message, type = "normal") {
+      statusMsg.textContent = message;
+      statusMsg.className = "status-box";
+
+      if (type === "error") statusMsg.classList.add("error");
+      if (type === "success") statusMsg.classList.add("success");
+    }
+
+    loginBtn.addEventListener("click", async () => {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        setStatus("Please enter email and password.", "error");
+        return;
+      }
+
+      try {
+        loginBtn.disabled = true;
+        loginBtn.textContent = "Logging In...";
+
+        const { data, error } = await sb.auth.signInWithPassword({
+          email,
+          password
+        });
+
+        if (error) {
+          setStatus(error.message, "error");
+          loginBtn.disabled = false;
+          loginBtn.textContent = "Login";
+          return;
+        }
+
+        const userId = data?.user?.id;
+
+        if (!userId) {
+          setStatus("User not found.", "error");
+          loginBtn.disabled = false;
+          loginBtn.textContent = "Login";
+          return;
+        }
+
+        const { data: hostData, error: hostError } = await sb
+          .from("hosts")
+          .select("*")
+          .eq("auth_user_id", userId)
+          .single();
+
+        if (hostError || !hostData) {
+          setStatus("Host profile not found.", "error");
+          loginBtn.disabled = false;
+          loginBtn.textContent = "Login";
+          return;
+        }
+
+        localStorage.setItem("talkmitra_host", JSON.stringify(hostData));
+
+        if (hostData.approved === true) {
+          setStatus("Login successful. Redirecting...", "success");
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1000);
+        } else {
+          setStatus("Your account is pending approval.", "error");
+          setTimeout(() => {
+            window.location.href = "pending.html";
+          }, 1000);
+        }
+      } catch (err) {
+        console.error(err);
+        setStatus("Something went wrong. Please try again.", "error");
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Login";
+      }
+    });
+  </script>
+</body>
+</html>

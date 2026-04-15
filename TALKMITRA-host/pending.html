@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Approval Pending - TalkMitra</title>
+  <link rel="stylesheet" href="assets/host-style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="topbar glass-card">
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="TalkMitra Logo" />
+      </div>
+      <div>
+        <div class="brand-title">TalkMitra</div>
+        <div class="brand-sub">Host Approval Status</div>
+      </div>
+    </div>
+
+    <div class="hero glass-card">
+      <div class="badge">Admin Review in Progress</div>
+      <h1>Your Account is <span>Pending</span></h1>
+      <p>
+        Your host account has been created successfully, but admin approval is still required
+        before you can access the host dashboard.
+      </p>
+
+      <div class="chip-row">
+        <div class="chip">Approval Check</div>
+        <div class="chip">Host Status</div>
+        <div class="chip">Dashboard Unlock</div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Current Status</h2>
+      <p class="section-subtitle">
+        Please wait for the admin team to review and approve your host profile.
+      </p>
+
+      <div class="note-box">
+        After approval:
+        <br /><br />
+        • You will be able to login to your host dashboard<br />
+        • Your selected plan will become active<br />
+        • You can check earnings, profile and support options
+      </div>
+
+      <div class="form-grid" style="margin-top: 14px;">
+        <button class="main-btn" id="checkBtn">Check Approval Again</button>
+        <button class="secondary-btn" onclick="goToLogin()">Back to Login</button>
+        <div class="status-box" id="statusMsg"></div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Need Help?</h2>
+      <p class="section-subtitle">
+        If approval is taking too long, contact support or admin for verification.
+      </p>
+      <button class="secondary-btn" onclick="goToSupport()">Support Page</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://vugexzusziumzzgturum.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1Z2V4enVzeml1bXp6Z3R1cnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3OTk3ODYsImV4cCI6MjA5MTM3NTc4Nn0.CYChM5hKWj_Bk2I_osLUcoWGHE0OeeBDHEh1Vju6dkM";
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const checkBtn = document.getElementById("checkBtn");
+    const statusMsg = document.getElementById("statusMsg");
+
+    function goToLogin() {
+      window.location.href = "login.html";
+    }
+
+    function goToSupport() {
+      window.location.href = "support.html";
+    }
+
+    function setStatus(message, type = "normal") {
+      statusMsg.textContent = message;
+      statusMsg.className = "status-box";
+
+      if (type === "error") statusMsg.classList.add("error");
+      if (type === "success") statusMsg.classList.add("success");
+    }
+
+    checkBtn.addEventListener("click", async () => {
+      const savedHost = JSON.parse(localStorage.getItem("talkmitra_host"));
+
+      if (!savedHost || !savedHost.auth_user_id) {
+        setStatus("Host session not found. Please login again.", "error");
+        return;
+      }
+
+      try {
+        checkBtn.disabled = true;
+        checkBtn.textContent = "Checking...";
+
+        const { data, error } = await sb
+          .from("hosts")
+          .select("*")
+          .eq("auth_user_id", savedHost.auth_user_id)
+          .single();
+
+        if (error || !data) {
+          setStatus("Host record not found.", "error");
+          checkBtn.disabled = false;
+          checkBtn.textContent = "Check Approval Again";
+          return;
+        }
+
+        localStorage.setItem("talkmitra_host", JSON.stringify(data));
+
+        if (data.approved === true) {
+          setStatus("Approved! Redirecting to dashboard...", "success");
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1000);
+        } else {
+          setStatus("Still pending. Please check again later.", "error");
+          checkBtn.disabled = false;
+          checkBtn.textContent = "Check Approval Again";
+        }
+      } catch (err) {
+        console.error(err);
+        setStatus("Something went wrong. Please try again.", "error");
+        checkBtn.disabled = false;
+        checkBtn.textContent = "Check Approval Again";
+      }
+    });
+  </script>
+</body>
+</html>

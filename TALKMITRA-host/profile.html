@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Host Profile - TalkMitra</title>
+  <link rel="stylesheet" href="assets/host-style.css" />
+</head>
+<body>
+  <div class="page">
+
+    <div class="topbar glass-card">
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="TalkMitra Logo">
+      </div>
+      <div>
+        <div class="brand-title">TalkMitra</div>
+        <div class="brand-sub">Host Profile</div>
+      </div>
+    </div>
+
+    <div class="hero glass-card">
+      <div class="badge">Profile Details</div>
+      <h1><span id="hostName">Host</span> Profile</h1>
+      <p>Check your account details, plan status and upgrade option.</p>
+
+      <div class="chip-row">
+        <div class="chip" id="planChip">Plan</div>
+        <div class="chip" id="statusChip">Status</div>
+        <div class="chip">Host Account</div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Account Information</h2>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Full Name</span>
+          <strong id="name">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Email</span>
+          <strong id="email">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Phone</span>
+          <strong id="phone">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Age</span>
+          <strong id="age">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Gender</span>
+          <strong id="gender">-</strong>
+        </div>
+        <div class="info-item">
+          <span>City</span>
+          <strong id="city">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Bio</span>
+          <strong id="bio">-</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Plan Details</h2>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Current Plan</span>
+          <strong id="plan">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Earning Share</span>
+          <strong id="share">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Approval Status</span>
+          <strong id="approval">-</strong>
+        </div>
+      </div>
+
+      <div class="note-box" id="planNote">
+        Free plan hosts get 40% earning share. Premium hosts get 60% share and better visibility.
+      </div>
+
+      <button class="main-btn" id="upgradeBtn" onclick="upgradePlan()">
+        Upgrade to Premium
+      </button>
+      <div class="status-box" id="statusMsg"></div>
+    </div>
+
+    <div class="glass-card card">
+      <div class="form-grid">
+        <button class="secondary-btn" onclick="goDashboard()">Back to Dashboard</button>
+        <button class="secondary-btn" onclick="goSupport()">Support</button>
+        <button class="secondary-btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://vugexzusziumzzgturum.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1Z2V4enVzeml1bXp6Z3R1cnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3OTk3ODYsImV4cCI6MjA5MTM3NTc4Nn0.CYChM5hKWj_Bk2I_osLUcoWGHE0OeeBDHEh1Vju6dkM";
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    function goDashboard() {
+      window.location.href = "dashboard.html";
+    }
+
+    function goSupport() {
+      window.location.href = "support.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("talkmitra_host");
+      window.location.href = "login.html";
+    }
+
+    function setStatus(message, type = "normal") {
+      const statusMsg = document.getElementById("statusMsg");
+      statusMsg.textContent = message;
+      statusMsg.className = "status-box";
+
+      if (type === "error") statusMsg.classList.add("error");
+      if (type === "success") statusMsg.classList.add("success");
+    }
+
+    function loadProfile() {
+      const host = JSON.parse(localStorage.getItem("talkmitra_host"));
+
+      if (!host) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      document.getElementById("hostName").innerText = host.name || "Host";
+      document.getElementById("name").innerText = host.name || "-";
+      document.getElementById("email").innerText = host.email || "-";
+      document.getElementById("phone").innerText = host.phone || "-";
+      document.getElementById("age").innerText = host.age || "-";
+      document.getElementById("gender").innerText = host.gender || "-";
+      document.getElementById("city").innerText = host.city || "-";
+      document.getElementById("bio").innerText = host.bio || "-";
+      document.getElementById("plan").innerText = host.plan || "-";
+
+      const isPremium = host.plan === "premium";
+      const isApproved = host.approved === true;
+
+      document.getElementById("share").innerText = isPremium ? "60%" : "40%";
+      document.getElementById("approval").innerText = isApproved ? "Approved" : "Pending";
+      document.getElementById("planChip").innerText = isPremium ? "Premium (60%)" : "Free (40%)";
+      document.getElementById("statusChip").innerText = isApproved ? "Approved" : "Pending";
+
+      if (isPremium) {
+        document.getElementById("planNote").innerText =
+          "Your premium plan is active. You get 60% earning share and better platform visibility.";
+        document.getElementById("upgradeBtn").innerText = "Premium Active";
+        document.getElementById("upgradeBtn").disabled = true;
+        document.getElementById("upgradeBtn").style.opacity = "0.6";
+      } else {
+        document.getElementById("planNote").innerText =
+          "Free plan hosts get 40% earning share. Upgrade to premium for 60% share and better visibility.";
+      }
+    }
+
+    async function upgradePlan() {
+      const host = JSON.parse(localStorage.getItem("talkmitra_host"));
+
+      if (!host) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      if (host.plan === "premium") {
+        setStatus("Premium plan already active.", "success");
+        return;
+      }
+
+      try {
+        const upgradeBtn = document.getElementById("upgradeBtn");
+        upgradeBtn.disabled = true;
+        upgradeBtn.innerText = "Upgrading...";
+
+        const { data, error } = await sb
+          .from("hosts")
+          .update({ plan: "premium" })
+          .eq("auth_user_id", host.auth_user_id)
+          .select()
+          .single();
+
+        if (error || !data) {
+          setStatus("Upgrade failed. Please try again.", "error");
+          upgradeBtn.disabled = false;
+          upgradeBtn.innerText = "Upgrade to Premium";
+          return;
+        }
+
+        localStorage.setItem("talkmitra_host", JSON.stringify(data));
+        setStatus("Premium activated successfully.", "success");
+        loadProfile();
+      } catch (err) {
+        console.error(err);
+        setStatus("Something went wrong. Please try again.", "error");
+      }
+    }
+
+    loadProfile();
+  </script>
+</body>
+</html>

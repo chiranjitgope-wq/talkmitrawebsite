@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalkMitra Host Registration</title>
+  <link rel="stylesheet" href="assets/host-style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="topbar glass-card">
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="TalkMitra Logo" />
+      </div>
+      <div>
+        <div class="brand-title">TalkMitra</div>
+        <div class="brand-sub">Host Registration Panel</div>
+      </div>
+    </div>
+
+    <div class="hero glass-card">
+      <div class="badge">Work From Home Opportunity</div>
+      <h1>Start Earning with <span>Chat & Calls</span></h1>
+      <p>
+        Join TalkMitra as a host. Fill your details, choose your plan,
+        wait for admin approval, then login to your dashboard.
+      </p>
+
+      <div class="chip-row">
+        <div class="chip">Flexible Timing</div>
+        <div class="chip">Admin Approval</div>
+        <div class="chip">Host Dashboard</div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Earning Overview</h2>
+      <p class="section-subtitle">
+        Current platform rates and sample earnings for hosts.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value">₹2</div>
+          <div class="stat-label">Chat / Min</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">₹5</div>
+          <div class="stat-label">Call / Min</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">₹240</div>
+          <div class="stat-label">2 Hrs Example</div>
+        </div>
+      </div>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>2 hours chat daily example</span>
+          <strong>₹240 / Day</strong>
+        </div>
+        <div class="info-item">
+          <span>Approx monthly example</span>
+          <strong>₹7200+</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Choose Your Plan</h2>
+      <p class="section-subtitle">
+        Premium hosts get better earning share and better visibility.
+      </p>
+
+      <div class="plan-grid">
+        <label class="plan-card selected" id="freePlanCard">
+          <input type="radio" name="plan" value="free" checked />
+          <div class="plan-top">
+            <h3>Free</h3>
+            <span class="plan-pill free-pill">Standard</span>
+          </div>
+
+          <ul class="plan-points">
+            <li><strong>40% earning share</strong></li>
+            <li>Normal platform visibility</li>
+            <li>No VIP badge</li>
+            <li>Example: ₹1000 → your share ₹400</li>
+          </ul>
+        </label>
+
+        <label class="plan-card" id="premiumPlanCard">
+          <input type="radio" name="plan" value="premium" />
+          <div class="plan-top">
+            <h3>Premium</h3>
+            <span class="plan-pill premium-pill">VIP</span>
+          </div>
+
+          <ul class="plan-points">
+            <li><strong>60% earning share</strong></li>
+            <li>Top listing priority</li>
+            <li>VIP badge on platform</li>
+            <li>Example: ₹1000 → your share ₹600</li>
+          </ul>
+        </label>
+      </div>
+
+      <div class="note-box">
+        Premium selection gives you better earning percentage and stronger profile visibility after approval.
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Create Your Host Account</h2>
+      <p class="section-subtitle">
+        Fill your details correctly. After submission, your profile will go for admin review.
+      </p>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter full name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter email" />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create password" />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="Enter phone number" />
+        </div>
+
+        <div class="field">
+          <label for="age">Age</label>
+          <input type="number" id="age" placeholder="Enter age" />
+        </div>
+
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select id="gender">
+            <option value="">Select gender</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="Enter city" />
+        </div>
+
+        <div class="field">
+          <label for="bio">Short Bio</label>
+          <textarea id="bio" placeholder="Write a short intro about yourself"></textarea>
+        </div>
+
+        <button class="main-btn" id="registerBtn">Create Account</button>
+        <div class="status-box" id="statusMsg"></div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Already Registered?</h2>
+      <p class="section-subtitle">
+        If your host account is already created, login from the host login page.
+      </p>
+      <button class="secondary-btn" onclick="goToLogin()">Go to Login</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://vugexzusziumzzgturum.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1Z2V4enVzeml1bXp6Z3R1cnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3OTk3ODYsImV4cCI6MjA5MTM3NTc4Nn0.CYChM5hKWj_Bk2I_osLUcoWGHE0OeeBDHEh1Vju6dkM";
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const freePlanCard = document.getElementById("freePlanCard");
+    const premiumPlanCard = document.getElementById("premiumPlanCard");
+    const statusMsg = document.getElementById("statusMsg");
+    const registerBtn = document.getElementById("registerBtn");
+
+    function goToLogin() {
+      window.location.href = "login.html";
+    }
+
+    function updatePlanSelection() {
+      const selectedPlan =
+        document.querySelector('input[name="plan"]:checked')?.value || "free";
+
+      freePlanCard.classList.remove("selected");
+      premiumPlanCard.classList.remove("selected");
+
+      if (selectedPlan === "premium") {
+        premiumPlanCard.classList.add("selected");
+      } else {
+        freePlanCard.classList.add("selected");
+      }
+    }
+
+    function setStatus(message, type = "normal") {
+      statusMsg.textContent = message;
+      statusMsg.className = "status-box";
+
+      if (type === "error") statusMsg.classList.add("error");
+      if (type === "success") statusMsg.classList.add("success");
+    }
+
+    document.querySelectorAll('input[name="plan"]').forEach((radio) => {
+      radio.addEventListener("change", updatePlanSelection);
+    });
+
+    registerBtn.addEventListener("click", async () => {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value;
+      const city = document.getElementById("city").value.trim();
+      const bio = document.getElementById("bio").value.trim();
+      const plan =
+        document.querySelector('input[name="plan"]:checked')?.value || "free";
+
+      if (!name || !email || !password || !phone || !age || !gender || !city) {
+        setStatus("Please fill all required fields.", "error");
+        return;
+      }
+
+      if (password.length < 6) {
+        setStatus("Password must be at least 6 characters.", "error");
+        return;
+      }
+
+      try {
+        registerBtn.disabled = true;
+        registerBtn.textContent = "Creating Account...";
+
+        const { data, error } = await sb.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              full_name: name,
+              role: "host"
+            }
+          }
+        });
+
+        if (error) {
+          setStatus(error.message, "error");
+          registerBtn.disabled = false;
+          registerBtn.textContent = "Create Account";
+          return;
+        }
+
+        const userId = data?.user?.id;
+
+        if (!userId) {
+          setStatus("Account created, but user ID not found.", "error");
+          registerBtn.disabled = false;
+          registerBtn.textContent = "Create Account";
+          return;
+        }
+
+        const { error: insertError } = await sb.from("hosts").insert([
+          {
+            auth_user_id: userId,
+            name: name,
+            email: email,
+            phone: phone,
+            age: Number(age),
+            gender: gender,
+            city: city,
+            bio: bio,
+            chat_rate: 2,
+            call_rate: 5,
+            plan: plan,
+            approved: false,
+            online: false
+          }
+        ]);
+
+        if (insertError) {
+          setStatus(insertError.message, "error");
+          registerBtn.disabled = false;
+          registerBtn.textContent = "Create Account";
+          return;
+        }
+
+        setStatus(
+          "Host account created successfully. Wait for admin approval, then login.",
+          "success"
+        );
+
+        registerBtn.textContent = "Account Created";
+
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1500);
+      } catch (err) {
+        console.error(err);
+        setStatus("Something went wrong. Please try again.", "error");
+        registerBtn.disabled = false;
+        registerBtn.textContent = "Create Account";
+      }
+    });
+
+    updatePlanSelection();
+  </script>
+</body>
+</html>

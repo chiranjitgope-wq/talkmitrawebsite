@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Host Dashboard - TalkMitra</title>
+  <link rel="stylesheet" href="assets/host-style.css" />
+</head>
+<body>
+  <div class="page">
+
+    <!-- TOP BAR -->
+    <div class="topbar glass-card">
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="TalkMitra Logo">
+      </div>
+      <div>
+        <div class="brand-title">TalkMitra</div>
+        <div class="brand-sub">Host Dashboard</div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero glass-card">
+      <div class="badge">Host Panel</div>
+      <h1>Welcome, <span id="hostName">Host</span></h1>
+      <p>Your earning dashboard, plan status and performance overview.</p>
+
+      <div class="chip-row">
+        <div class="chip" id="planChip">Plan</div>
+        <div class="chip">Live Earnings</div>
+        <div class="chip">Host Active</div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="glass-card card">
+      <h2 class="section-title">Earning Summary</h2>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value" id="totalChats">0</div>
+          <div class="stat-label">Total Chats</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="totalCalls">0</div>
+          <div class="stat-label">Total Calls</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="totalEarn">₹0</div>
+          <div class="stat-label">Earnings</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOST DETAILS -->
+    <div class="glass-card card">
+      <h2 class="section-title">Host Details</h2>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Name</span>
+          <strong id="name">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Email</span>
+          <strong id="email">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Phone</span>
+          <strong id="phone">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Plan</span>
+          <strong id="plan">-</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTION -->
+    <div class="glass-card card">
+      <h2 class="section-title">Quick Actions</h2>
+
+      <div class="form-grid">
+        <button class="main-btn" onclick="goEarnings()">View Earnings</button>
+        <button class="secondary-btn" onclick="goProfile()">Profile</button>
+        <button class="secondary-btn" onclick="goSupport()">Support</button>
+        <button class="secondary-btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = "https://vugexzusziumzzgturum.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1Z2V4enVzeml1bXp6Z3R1cnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3OTk3ODYsImV4cCI6MjA5MTM3NTc4Nn0.CYChM5hKWj_Bk2I_osLUcoWGHE0OeeBDHEh1Vju6dkM";
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    function goEarnings(){
+      window.location.href = "earnings.html";
+    }
+
+    function goProfile(){
+      window.location.href = "profile.html";
+    }
+
+    function goSupport(){
+      window.location.href = "support.html";
+    }
+
+    function logout(){
+      localStorage.removeItem("talkmitra_host");
+      window.location.href = "login.html";
+    }
+
+    async function loadDashboard(){
+      const host = JSON.parse(localStorage.getItem("talkmitra_host"));
+
+      if(!host){
+        window.location.href = "login.html";
+        return;
+      }
+
+      // UI set
+      document.getElementById("hostName").innerText = host.name;
+      document.getElementById("name").innerText = host.name;
+      document.getElementById("email").innerText = host.email;
+      document.getElementById("phone").innerText = host.phone;
+      document.getElementById("plan").innerText = host.plan;
+
+      document.getElementById("planChip").innerText =
+        host.plan === "premium" ? "Premium (60%)" : "Free (40%)";
+
+      // dummy stats (baad me real karenge)
+      document.getElementById("totalChats").innerText = 25;
+      document.getElementById("totalCalls").innerText = 10;
+
+      let earn = host.plan === "premium" ? 600 : 400;
+      document.getElementById("totalEarn").innerText = "₹" + earn;
+    }
+
+    loadDashboard();
+  </script>
+<nav class="bottom-nav">
+  <a href="dashboard.html" class="active">Home</a>
+  <a href="earnings.html">Earnings</a>
+  <a href="profile.html">Profile</a>
+  <a href="support.html">Support</a>
+</nav>
+</body>
+</html>

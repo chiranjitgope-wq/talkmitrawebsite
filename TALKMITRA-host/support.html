@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Host Support - TalkMitra</title>
+  <link rel="stylesheet" href="assets/host-style.css" />
+</head>
+<body>
+  <div class="page">
+
+    <div class="topbar glass-card">
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="TalkMitra Logo">
+      </div>
+      <div>
+        <div class="brand-title">TalkMitra</div>
+        <div class="brand-sub">Host Support</div>
+      </div>
+    </div>
+
+    <div class="hero glass-card">
+      <div class="badge">Need Help?</div>
+      <h1>Host <span>Support</span></h1>
+      <p>
+        If you are facing login issues, approval delay, plan problems, or account access issues,
+        contact support from here.
+      </p>
+
+      <div class="chip-row">
+        <div class="chip" id="planChip">Plan</div>
+        <div class="chip" id="statusChip">Status</div>
+        <div class="chip">Telegram Support</div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Your Account</h2>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Name</span>
+          <strong id="name">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Email</span>
+          <strong id="email">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Phone</span>
+          <strong id="phone">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Plan</span>
+          <strong id="plan">-</strong>
+        </div>
+        <div class="info-item">
+          <span>Approval</span>
+          <strong id="approval">-</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Common Help Topics</h2>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Login Problem</span>
+          <strong>Get Help</strong>
+        </div>
+        <div class="info-item">
+          <span>Approval Pending</span>
+          <strong>Contact Admin</strong>
+        </div>
+        <div class="info-item">
+          <span>Premium Upgrade Issue</span>
+          <strong>Resolve</strong>
+        </div>
+        <div class="info-item">
+          <span>Earnings Query</span>
+          <strong>Check Support</strong>
+        </div>
+        <div class="info-item">
+          <span>Account Access Issue</span>
+          <strong>Get Help</strong>
+        </div>
+      </div>
+
+      <div class="note-box">
+        Please contact support using your registered email or phone number so your account can be verified quickly.
+      </div>
+    </div>
+
+    <div class="glass-card card">
+      <h2 class="section-title">Contact Support</h2>
+
+      <div class="form-grid">
+        <button class="main-btn" onclick="openTelegram()">Contact on Telegram</button>
+        <button class="secondary-btn" onclick="goDashboard()">Back to Dashboard</button>
+        <button class="secondary-btn" onclick="logout()">Logout</button>
+      </div>
+
+      <div class="status-box" id="statusMsg"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function goDashboard() {
+      window.location.href = "dashboard.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("talkmitra_host");
+      window.location.href = "login.html";
+    }
+
+    function openTelegram() {
+      window.open("https://t.me/@talkmitra_support", "_blank");
+    }
+
+    function loadSupportPage() {
+      const host = JSON.parse(localStorage.getItem("talkmitra_host"));
+
+      if (!host) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      document.getElementById("name").innerText = host.name || "-";
+      document.getElementById("email").innerText = host.email || "-";
+      document.getElementById("phone").innerText = host.phone || "-";
+      document.getElementById("plan").innerText = host.plan || "-";
+      document.getElementById("approval").innerText = host.approved ? "Approved" : "Pending";
+
+      document.getElementById("planChip").innerText =
+        host.plan === "premium" ? "Premium (60%)" : "Free (40%)";
+
+      document.getElementById("statusChip").innerText =
+        host.approved ? "Approved" : "Pending";
+    }
+
+    loadSupportPage();
+  </script>
+</body>
+</html>
