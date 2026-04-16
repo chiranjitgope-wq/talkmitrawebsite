@@ -243,31 +243,25 @@
         registerBtn.textContent = "Creating Account...";
 
         const { data, error } = await sb.auth.signUp({
-          email,
-          password,
-          options: {
-            data: {
-              full_name: name,
-              role: "host"
-            }
-          }
-        });
+  email,
+  password
+});
 
-        if (error) {
-          setStatus(error.message, "error");
-          registerBtn.disabled = false;
-          registerBtn.textContent = "Create Account";
-          return;
-        }
+if (error) {
+  setStatus(error.message, "error");
+  registerBtn.disabled = false;
+  registerBtn.textContent = "Create Account";
+  return;
+}
 
-        const userId = data?.user?.id;
+const userId = data?.user?.id || data?.session?.user?.id;
 
-        if (!userId) {
-          setStatus("Account created, but user ID not found.", "error");
-          registerBtn.disabled = false;
-          registerBtn.textContent = "Create Account";
-          return;
-        }
+if (!userId) {
+  setStatus("Signup hua, lekin user ID nahi mila. Supabase me Email Confirmation OFF karke phir test karo.", "error");
+  registerBtn.disabled = false;
+  registerBtn.textContent = "Create Account";
+  return;
+}
 
         const { error: insertError } = await sb.from("hosts").insert([
           {
