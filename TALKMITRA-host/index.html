@@ -1,14 +1,236 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TalkMitra Host</title>
-
-  <script>
-    window.location.href = "login.html";
-  </script>
+  <link rel="stylesheet" href="assets/host-style.css" />
 </head>
 <body>
+  <div class="page">
+
+    <!-- TOPBAR -->
+    <div class="topbar glass-card">
+      <div class="logo-wrap">
+        <img src="assets/logo.png" alt="TalkMitra Logo" />
+      </div>
+      <div>
+        <div class="brand-title">TalkMitra</div>
+        <div class="brand-sub">Host Website</div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero glass-card">
+      <div class="badge">Work From Home Opportunity</div>
+      <h1>Become a <span>TalkMitra Host</span></h1>
+      <p>
+        Join as a host, chat with users, take calls, grow your profile,
+        and start earning from home with a simple dashboard experience.
+      </p>
+
+      <div class="chip-row">
+        <div class="chip">Flexible Timing</div>
+        <div class="chip">Chat & Call</div>
+        <div class="chip">Host Dashboard</div>
+      </div>
+
+      <div class="form-grid" style="margin-top: 16px;">
+        <button class="main-btn" onclick="goRegister()">Register Now</button>
+        <button class="secondary-btn" onclick="goLogin()">Login Now</button>
+      </div>
+    </div>
+
+    <!-- HOME SECTION -->
+    <div id="homeSection" class="glass-card card">
+      <h2 class="section-title">Why Join TalkMitra?</h2>
+      <p class="section-subtitle">
+        Host side website jahan se aap account bana sakte ho, login kar sakte ho,
+        aur approval ke baad apna dashboard use kar sakte ho.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value">₹2</div>
+          <div class="stat-label">Chat / Min</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">₹5</div>
+          <div class="stat-label">Call / Min</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">60%</div>
+          <div class="stat-label">Premium Share</div>
+        </div>
+      </div>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Free Plan</span>
+          <strong>40% Share</strong>
+        </div>
+        <div class="info-item">
+          <span>Premium Plan</span>
+          <strong>60% Share</strong>
+        </div>
+        <div class="info-item">
+          <span>Approval Required</span>
+          <strong>Yes</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHATS SECTION -->
+    <div id="chatsSection" class="glass-card card" style="display: none;">
+      <h2 class="section-title">Chats</h2>
+      <p class="section-subtitle">
+        Approval ke baad aap chat requests handle kar paoge. Abhi ye preview section hai.
+      </p>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Chat Status</span>
+          <strong>Available After Login</strong>
+        </div>
+        <div class="info-item">
+          <span>Chat Rate</span>
+          <strong>₹2 / Min</strong>
+        </div>
+        <div class="info-item">
+          <span>Live Chat Access</span>
+          <strong>Dashboard Based</strong>
+        </div>
+      </div>
+
+      <div class="note-box">
+        Chat section backend connect hone ke baad live users ke saath work karega.
+      </div>
+    </div>
+
+    <!-- CALLS SECTION -->
+    <div id="callsSection" class="glass-card card" style="display: none;">
+      <h2 class="section-title">Calls</h2>
+      <p class="section-subtitle">
+        Call section me approved hosts users ke saath voice calls receive karenge.
+      </p>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span>Call Status</span>
+          <strong>Available After Login</strong>
+        </div>
+        <div class="info-item">
+          <span>Call Rate</span>
+          <strong>₹5 / Min</strong>
+        </div>
+        <div class="info-item">
+          <span>Voice Support</span>
+          <strong>Host Dashboard</strong>
+        </div>
+      </div>
+
+      <div class="note-box">
+        Call backend connect hone ke baad ye section real host calling flow se link hoga.
+      </div>
+    </div>
+
+    <!-- PROFILE SECTION -->
+    <div id="profileSection" class="glass-card card" style="display: none;">
+      <h2 class="section-title">Profile Access</h2>
+      <p class="section-subtitle">
+        Apna host profile dekhne ke liye login karna zaruri hai.
+      </p>
+
+      <div class="form-grid">
+        <button class="main-btn" onclick="goLogin()">Login to Profile</button>
+        <button class="secondary-btn" onclick="goRegister()">Create New Host Account</button>
+      </div>
+    </div>
+
+    <!-- PLAN SECTION -->
+    <div class="glass-card card">
+      <h2 class="section-title">Choose Your Plan</h2>
+      <p class="section-subtitle">
+        Better earning share aur visibility ke liye right plan choose karo.
+      </p>
+
+      <div class="plan-grid">
+        <div class="plan-card selected">
+          <div class="plan-top">
+            <h3>Free</h3>
+            <span class="plan-pill free-pill">Standard</span>
+          </div>
+          <ul class="plan-points">
+            <li><strong>40% earning share</strong></li>
+            <li>Normal visibility</li>
+            <li>Basic host profile</li>
+          </ul>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-top">
+            <h3>Premium</h3>
+            <span class="plan-pill premium-pill">VIP</span>
+          </div>
+          <ul class="plan-points">
+            <li><strong>60% earning share</strong></li>
+            <li>Better profile visibility</li>
+            <li>VIP style priority</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <a href="#" class="active" id="homeNav" onclick="showSection('home'); return false;">Home</a>
+    <a href="#" id="chatsNav" onclick="showSection('chats'); return false;">Chats</a>
+    <a href="#" id="callsNav" onclick="showSection('calls'); return false;">Calls</a>
+    <a href="#" id="profileNav" onclick="showSection('profile'); return false;">Profile</a>
+  </nav>
+
+  <script>
+    function goRegister() {
+      window.location.href = "register.html";
+    }
+
+    function goLogin() {
+      window.location.href = "login.html";
+    }
+
+    function showSection(section) {
+      document.getElementById("homeSection").style.display = "none";
+      document.getElementById("chatsSection").style.display = "none";
+      document.getElementById("callsSection").style.display = "none";
+      document.getElementById("profileSection").style.display = "none";
+
+      document.getElementById("homeNav").classList.remove("active");
+      document.getElementById("chatsNav").classList.remove("active");
+      document.getElementById("callsNav").classList.remove("active");
+      document.getElementById("profileNav").classList.remove("active");
+
+      if (section === "home") {
+        document.getElementById("homeSection").style.display = "block";
+        document.getElementById("homeNav").classList.add("active");
+      }
+
+      if (section === "chats") {
+        document.getElementById("chatsSection").style.display = "block";
+        document.getElementById("chatsNav").classList.add("active");
+      }
+
+      if (section === "calls") {
+        document.getElementById("callsSection").style.display = "block";
+        document.getElementById("callsNav").classList.add("active");
+      }
+
+      if (section === "profile") {
+        document.getElementById("profileSection").style.display = "block";
+        document.getElementById("profileNav").classList.add("active");
+      }
+    }
+  </script>
 </body>
 </html>
