@@ -266,9 +266,8 @@
 
         const { error: insertError } = await sb.from("hosts").insert([
           {
-            id: userId,
-            name: name,
-            email: email,
+            user_id: userId,
+            display_name: name,
             phone: phone,
             age: Number(age),
             gender: gender,
@@ -279,7 +278,7 @@
             plan: plan,
             approved: false,
             online: false,
-            status: "pending"
+            is_online: false
           }
         ]);
 
