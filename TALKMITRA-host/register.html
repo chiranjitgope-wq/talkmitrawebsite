@@ -265,21 +265,15 @@ if (!userId) {
 
         const { error: insertError } = await sb.from("hosts").insert([
           {
-            auth_user_id: userId,
-            name: name,
-            email: email,
-            phone: phone,
-            age: Number(age),
-            gender: gender,
-            city: city,
-            bio: bio,
-            chat_rate: 2,
-            call_rate: 5,
-            plan: plan,
-            approved: false,
-            online: false
-          }
-        ]);
+            const { error: insertError } = await sb.from("hosts").insert([
+  {
+    id: userId,
+    name: name,
+    email: email,
+    phone: phone,
+    status: "pending"
+  }
+]);
 
         if (insertError) {
           setStatus(insertError.message, "error");
