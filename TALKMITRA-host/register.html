@@ -265,22 +265,23 @@
         }
 
         const { error: insertError } = await sb.from("hosts").insert([
-          {
-            user_id: userId,
-            display_name: name,
-            phone: phone,
-            age: Number(age),
-            gender: gender,
-            city: city,
-            bio: bio,
-            chat_rate: 2,
-            call_rate: 5,
-            plan: plan,
-            approved: false,
-            online: false,
-            is_online: false
-          }
-        ]);
+  {
+    user_id: userId,
+    display_name: name,
+    email: email,
+    phone: phone,
+    age: Number(age),
+    gender: gender,
+    city: city,
+    bio: bio,
+    chat_rate: 2,
+    call_rate: 5,
+    plan: plan,
+    approved: false,
+    online: false,
+    is_online: false
+  }
+]);
 
         if (insertError) {
           setStatus(insertError.message, "error");
