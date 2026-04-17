@@ -161,7 +161,7 @@
           <textarea id="bio" placeholder="Write a short intro about yourself"></textarea>
         </div>
 
-        <button class="main-btn" id="registerBtn">Create Account</button>
+        <button class="main-btn" id="registerBtn" type="button">Create Account</button>
         <div class="status-box" id="statusMsg"></div>
       </div>
     </div>
@@ -241,39 +241,47 @@
       try {
         registerBtn.disabled = true;
         registerBtn.textContent = "Creating Account...";
+        setStatus("");
 
         const { data, error } = await sb.auth.signUp({
-  email,
-  password
-});
+          email: email,
+          password: password
+        });
 
-if (error) {
-  setStatus(error.message, "error");
-  registerBtn.disabled = false;
-  registerBtn.textContent = "Create Account";
-  return;
-}
+        if (error) {
+          setStatus(error.message, "error");
+          registerBtn.disabled = false;
+          registerBtn.textContent = "Create Account";
+          return;
+        }
 
-const userId = data?.user?.id || data?.session?.user?.id;
+        const userId = data?.user?.id;
 
-if (!userId) {
-  setStatus("Signup hua, lekin user ID nahi mila. Supabase me Email Confirmation OFF karke phir test karo.", "error");
-  registerBtn.disabled = false;
-  registerBtn.textContent = "Create Account";
-  return;
-}
+        if (!userId) {
+          setStatus("User ID not found after signup.", "error");
+          registerBtn.disabled = false;
+          registerBtn.textContent = "Create Account";
+          return;
+        }
 
         const { error: insertError } = await sb.from("hosts").insert([
           {
-            const { error: insertError } = await sb.from("hosts").insert([
-  {
-    id: userId,
-    name: name,
-    email: email,
-    phone: phone,
-    status: "pending"
-  }
-]);
+            id: userId,
+            name: name,
+            email: email,
+            phone: phone,
+            age: Number(age),
+            gender: gender,
+            city: city,
+            bio: bio,
+            chat_rate: 2,
+            call_rate: 5,
+            plan: plan,
+            approved: false,
+            online: false,
+            status: "pending"
+          }
+        ]);
 
         if (insertError) {
           setStatus(insertError.message, "error");
@@ -282,16 +290,13 @@ if (!userId) {
           return;
         }
 
-        setStatus(
-          "Host account created successfully. Wait for admin approval, then login.",
-          "success"
-        );
-
+        setStatus("Registration successful", "success");
         registerBtn.textContent = "Account Created";
 
         setTimeout(() => {
           window.location.href = "login.html";
         }, 1500);
+
       } catch (err) {
         console.error(err);
         setStatus("Something went wrong. Please try again.", "error");
