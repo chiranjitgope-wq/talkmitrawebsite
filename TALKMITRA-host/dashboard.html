@@ -2,17 +2,392 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Host Dashboard - TalkMitra</title>
-  <link rel="stylesheet" href="assets/host-style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalkMitra Host Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0f172a, #111827, #1e293b);
+      color: #fff;
+      min-height: 100vh;
+      padding-bottom: 90px;
+    }
+
+    .page {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+
+    .logo-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .brand-sub {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-top: 3px;
+    }
+
+    .hero {
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(34, 197, 94, 0.18);
+      color: #86efac;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 24px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 span {
+      color: #facc15;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: #dbeafe;
+      line-height: 1.6;
+    }
+
+    .warning-box {
+      margin-top: 14px;
+      background: rgba(250, 204, 21, 0.14);
+      color: #fde68a;
+      border: 1px solid rgba(250, 204, 21, 0.25);
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      display: none;
+    }
+
+    .section {
+      display: none;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-title {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .stat-box {
+      background: rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .info-item span {
+      color: #dbeafe;
+      font-size: 14px;
+    }
+
+    .info-item strong {
+      color: #fff;
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #e2e8f0;
+    }
+
+    .profile-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .profile-field {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .profile-label {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 5px;
+    }
+
+    .profile-value {
+      font-size: 15px;
+      color: #fff;
+      word-break: break-word;
+    }
+
+    .status-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .status-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .status-online {
+      color: #86efac;
+      background: rgba(34,197,94,0.14);
+      border-color: rgba(34,197,94,0.2);
+    }
+
+    .status-offline {
+      color: #fca5a5;
+      background: rgba(239,68,68,0.14);
+      border-color: rgba(239,68,68,0.2);
+    }
+
+    .status-approved {
+      color: #86efac;
+      background: rgba(34,197,94,0.14);
+      border-color: rgba(34,197,94,0.2);
+    }
+
+    .status-pending {
+      color: #fde68a;
+      background: rgba(250,204,21,0.14);
+      border-color: rgba(250,204,21,0.2);
+    }
+
+    .action-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 16px;
+      padding: 13px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      flex: 1;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.09);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.08);
+      flex: 1;
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #fff;
+      width: 100%;
+    }
+
+    .activity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .activity-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .activity-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      gap: 10px;
+    }
+
+    .activity-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .activity-meta {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .bottom-nav-inner {
+      width: 100%;
+      max-width: 480px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 10px 12px 12px;
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 6px;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    .nav-btn.active {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+  </style>
 </head>
 <body>
   <div class="page">
-
-    <!-- TOP BAR -->
     <div class="topbar glass-card">
       <div class="logo-wrap">
-        <img src="assets/logo.png" alt="TalkMitra Logo">
+        <img src="assets/logo.png" alt="TalkMitra Logo" />
       </div>
       <div>
         <div class="brand-title">TalkMitra</div>
@@ -20,134 +395,446 @@
       </div>
     </div>
 
-    <!-- HERO -->
     <div class="hero glass-card">
-      <div class="badge">Host Panel</div>
-      <h1>Welcome, <span id="hostName">Host</span></h1>
-      <p>Your earning dashboard, plan status and performance overview.</p>
+      <div class="badge" id="welcomeBadge">Welcome Host</div>
+      <h1>Hello, <span id="heroHostName">Host</span></h1>
+      <p>
+        Manage your profile, check chat & call stats, and control your host status from one place.
+      </p>
+
+      <div class="warning-box" id="approvalWarning">
+        Your account is pending admin approval. Some features may stay limited until approval.
+      </div>
 
       <div class="chip-row">
-        <div class="chip" id="planChip">Plan</div>
-        <div class="chip">Live Earnings</div>
-        <div class="chip">Host Active</div>
+        <div class="chip" id="planChip">Plan: Free</div>
+        <div class="chip" id="approvalChip">Status: Pending</div>
+        <div class="chip" id="onlineChip">Offline</div>
       </div>
     </div>
 
-    <!-- STATS -->
-    <div class="glass-card card">
-      <h2 class="section-title">Earning Summary</h2>
+    <div class="section glass-card active" id="homeSection">
+      <h2 class="section-title">Home</h2>
+      <p class="section-subtitle">
+        Your quick overview, current rates and profile status.
+      </p>
 
       <div class="stats-grid">
         <div class="stat-box">
-          <div class="stat-value" id="totalChats">0</div>
-          <div class="stat-label">Total Chats</div>
+          <div class="stat-label">Chat Rate</div>
+          <div class="stat-value" id="homeChatRate">₹2</div>
         </div>
         <div class="stat-box">
-          <div class="stat-value" id="totalCalls">0</div>
-          <div class="stat-label">Total Calls</div>
+          <div class="stat-label">Call Rate</div>
+          <div class="stat-value" id="homeCallRate">₹5</div>
         </div>
         <div class="stat-box">
-          <div class="stat-value" id="totalEarn">₹0</div>
-          <div class="stat-label">Earnings</div>
+          <div class="stat-label">Today Chat</div>
+          <div class="stat-value" id="homeTodayChat">32m</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Today Calls</div>
+          <div class="stat-value" id="homeTodayCall">18m</div>
         </div>
       </div>
-    </div>
-
-    <!-- HOST DETAILS -->
-    <div class="glass-card card">
-      <h2 class="section-title">Host Details</h2>
 
       <div class="info-list">
         <div class="info-item">
-          <span>Name</span>
-          <strong id="name">-</strong>
-        </div>
-        <div class="info-item">
-          <span>Email</span>
-          <strong id="email">-</strong>
+          <span>Display Name</span>
+          <strong id="homeDisplayName">-</strong>
         </div>
         <div class="info-item">
           <span>Phone</span>
-          <strong id="phone">-</strong>
+          <strong id="homePhone">-</strong>
         </div>
         <div class="info-item">
-          <span>Plan</span>
-          <strong id="plan">-</strong>
+          <span>City</span>
+          <strong id="homeCity">-</strong>
+        </div>
+      </div>
+
+      <div class="status-row">
+        <div class="status-pill" id="approvalPill">Pending</div>
+        <div class="status-pill" id="onlinePill">Offline</div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-primary" id="toggleOnlineBtn">Go Online</button>
+        <button class="btn btn-secondary" id="refreshBtn">Refresh</button>
+      </div>
+    </div>
+
+    <div class="section glass-card" id="chatSection">
+      <h2 class="section-title">Chat</h2>
+      <p class="section-subtitle">
+        Your chat performance summary and recent activity.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Today Chat Earning</div>
+          <div class="stat-value" id="chatTodayEarning">₹64</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Total Chat Minutes</div>
+          <div class="stat-value" id="chatTotalMinutes">320</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Rate / Min</div>
+          <div class="stat-value" id="chatRateValue">₹2</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Active Chats</div>
+          <div class="stat-value">3</div>
+        </div>
+      </div>
+
+      <div class="activity-list">
+        <div class="activity-card">
+          <div class="activity-top">
+            <div class="activity-title">Recent Chat 1</div>
+            <div class="activity-title">₹24</div>
+          </div>
+          <div class="activity-meta">12 mins • Evening session • Completed</div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-top">
+            <div class="activity-title">Recent Chat 2</div>
+            <div class="activity-title">₹18</div>
+          </div>
+          <div class="activity-meta">9 mins • Afternoon • Completed</div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-top">
+            <div class="activity-title">Recent Chat 3</div>
+            <div class="activity-title">₹22</div>
+          </div>
+          <div class="activity-meta">11 mins • Morning • Completed</div>
         </div>
       </div>
     </div>
 
-    <!-- ACTION -->
-    <div class="glass-card card">
-      <h2 class="section-title">Quick Actions</h2>
+    <div class="section glass-card" id="callsSection">
+      <h2 class="section-title">Calls</h2>
+      <p class="section-subtitle">
+        Your call earnings, minutes and recent call activity.
+      </p>
 
-      <div class="form-grid">
-        <button class="main-btn" onclick="goEarnings()">View Earnings</button>
-        <button class="secondary-btn" onclick="goProfile()">Profile</button>
-        <button class="secondary-btn" onclick="goSupport()">Support</button>
-        <button class="secondary-btn" onclick="logout()">Logout</button>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Today Call Earning</div>
+          <div class="stat-value" id="callTodayEarning">₹90</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Total Call Minutes</div>
+          <div class="stat-value" id="callTotalMinutes">210</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Rate / Min</div>
+          <div class="stat-value" id="callRateValue">₹5</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Active Calls</div>
+          <div class="stat-value">1</div>
+        </div>
+      </div>
+
+      <div class="activity-list">
+        <div class="activity-card">
+          <div class="activity-top">
+            <div class="activity-title">Recent Call 1</div>
+            <div class="activity-title">₹40</div>
+          </div>
+          <div class="activity-meta">8 mins • Voice call • Completed</div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-top">
+            <div class="activity-title">Recent Call 2</div>
+            <div class="activity-title">₹25</div>
+          </div>
+          <div class="activity-meta">5 mins • Voice call • Completed</div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-top">
+            <div class="activity-title">Recent Call 3</div>
+            <div class="activity-title">₹30</div>
+          </div>
+          <div class="activity-meta">6 mins • Voice call • Completed</div>
+        </div>
       </div>
     </div>
 
+    <div class="section glass-card" id="profileSection">
+      <h2 class="section-title">Profile</h2>
+      <p class="section-subtitle">
+        Your host profile information and account details.
+      </p>
+
+      <div class="profile-grid">
+        <div class="profile-field">
+          <div class="profile-label">Display Name</div>
+          <div class="profile-value" id="profileName">-</div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-label">Email</div>
+          <div class="profile-value" id="profileEmail">-</div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-label">Phone</div>
+          <div class="profile-value" id="profilePhone">-</div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-label">Age</div>
+          <div class="profile-value" id="profileAge">-</div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-label">Gender</div>
+          <div class="profile-value" id="profileGender">-</div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-label">City</div>
+          <div class="profile-value" id="profileCity">-</div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-label">Bio</div>
+          <div class="profile-value" id="profileBio">-</div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-label">Plan</div>
+          <div class="profile-value" id="profilePlan">-</div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-label">Approval Status</div>
+          <div class="profile-value" id="profileApproval">-</div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-secondary" id="profileRefreshBtn">Refresh Profile</button>
+      </div>
+
+      <div class="action-row" style="margin-top:12px;">
+        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <button class="nav-btn active" data-section="homeSection">Home</button>
+      <button class="nav-btn" data-section="chatSection">Chat</button>
+      <button class="nav-btn" data-section="callsSection">Calls</button>
+      <button class="nav-btn" data-section="profileSection">Profile</button>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <script>
     const SUPABASE_URL = "https://vugexzusziumzzgturum.supabase.co";
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1Z2V4enVzeml1bXp6Z3R1cnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3OTk3ODYsImV4cCI6MjA5MTM3NTc4Nn0.CYChM5hKWj_Bk2I_osLUcoWGHE0OeeBDHEh1Vju6dkM";
     const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    function goEarnings(){
-      window.location.href = "earnings.html";
+    const navButtons = document.querySelectorAll(".nav-btn");
+    const sections = document.querySelectorAll(".section");
+
+    const approvalWarning = document.getElementById("approvalWarning");
+    const welcomeBadge = document.getElementById("welcomeBadge");
+    const heroHostName = document.getElementById("heroHostName");
+    const planChip = document.getElementById("planChip");
+    const approvalChip = document.getElementById("approvalChip");
+    const onlineChip = document.getElementById("onlineChip");
+    const approvalPill = document.getElementById("approvalPill");
+    const onlinePill = document.getElementById("onlinePill");
+    const toggleOnlineBtn = document.getElementById("toggleOnlineBtn");
+
+    let hostData = null;
+
+    function showSection(sectionId) {
+      sections.forEach((section) => section.classList.remove("active"));
+      navButtons.forEach((btn) => btn.classList.remove("active"));
+
+      document.getElementById(sectionId).classList.add("active");
+      document.querySelector(`[data-section="${sectionId}"]`).classList.add("active");
     }
 
-    function goProfile(){
-      window.location.href = "profile.html";
+    navButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        showSection(btn.dataset.section);
+      });
+    });
+
+    function safeValue(value) {
+      return value === null || value === undefined || value === "" ? "-" : value;
     }
 
-    function goSupport(){
-      window.location.href = "support.html";
+    function capitalizeText(value) {
+      if (!value) return "-";
+      return String(value).charAt(0).toUpperCase() + String(value).slice(1);
     }
 
-    function logout(){
-      localStorage.removeItem("talkmitra_host");
-      window.location.href = "login.html";
+    function updateOnlineUI(isOnline) {
+      onlineChip.textContent = isOnline ? "Online" : "Offline";
+      onlinePill.textContent = isOnline ? "Online" : "Offline";
+      onlinePill.className = "status-pill " + (isOnline ? "status-online" : "status-offline");
+      toggleOnlineBtn.textContent = isOnline ? "Go Offline" : "Go Online";
     }
 
-    async function loadDashboard(){
-      const host = JSON.parse(localStorage.getItem("talkmitra_host"));
+    function updateApprovalUI(isApproved) {
+      approvalChip.textContent = isApproved ? "Status: Approved" : "Status: Pending";
+      approvalPill.textContent = isApproved ? "Approved" : "Pending";
+      approvalPill.className = "status-pill " + (isApproved ? "status-approved" : "status-pending");
+      approvalWarning.style.display = isApproved ? "none" : "block";
+      welcomeBadge.textContent = isApproved ? "Approved Host" : "Pending Approval";
+    }
 
-      if(!host){
+    function fillProfile(data, authEmail = "") {
+      hostData = data;
+
+      const displayName = safeValue(data.display_name);
+      const plan = capitalizeText(data.plan || "free");
+      const approved = !!data.approved;
+      const isOnline = !!(data.online || data.is_online);
+      const chatRate = data.chat_rate ?? 2;
+      const callRate = data.call_rate ?? 5;
+
+      heroHostName.textContent = displayName;
+      planChip.textContent = "Plan: " + plan;
+
+      document.getElementById("homeDisplayName").textContent = displayName;
+      document.getElementById("homePhone").textContent = safeValue(data.phone);
+      document.getElementById("homeCity").textContent = safeValue(data.city);
+
+      document.getElementById("homeChatRate").textContent = "₹" + chatRate;
+      document.getElementById("homeCallRate").textContent = "₹" + callRate;
+      document.getElementById("chatRateValue").textContent = "₹" + chatRate;
+      document.getElementById("callRateValue").textContent = "₹" + callRate;
+
+      document.getElementById("chatTodayEarning").textContent = "₹" + (Number(chatRate) * 32);
+      document.getElementById("callTodayEarning").textContent = "₹" + (Number(callRate) * 18);
+
+      document.getElementById("profileName").textContent = displayName;
+      document.getElementById("profileEmail").textContent = authEmail || safeValue(data.email);
+      document.getElementById("profilePhone").textContent = safeValue(data.phone);
+      document.getElementById("profileAge").textContent = safeValue(data.age);
+      document.getElementById("profileGender").textContent = capitalizeText(data.gender);
+      document.getElementById("profileCity").textContent = safeValue(data.city);
+      document.getElementById("profileBio").textContent = safeValue(data.bio);
+      document.getElementById("profilePlan").textContent = plan;
+      document.getElementById("profileApproval").textContent = approved ? "Approved" : "Pending";
+
+      updateApprovalUI(approved);
+      updateOnlineUI(isOnline);
+
+      localStorage.setItem("hostData", JSON.stringify(data));
+    }
+
+    async function fetchLatestProfile() {
+      const { data: authData, error: authError } = await sb.auth.getUser();
+
+      if (authError || !authData?.user) {
+        localStorage.removeItem("hostData");
         window.location.href = "login.html";
         return;
       }
 
-      // UI set
-      document.getElementById("hostName").innerText = host.name;
-      document.getElementById("name").innerText = host.name;
-      document.getElementById("email").innerText = host.email;
-      document.getElementById("phone").innerText = host.phone;
-      document.getElementById("plan").innerText = host.plan;
+      const user = authData.user;
 
-      document.getElementById("planChip").innerText =
-        host.plan === "premium" ? "Premium (60%)" : "Free (40%)";
+      const { data: hostProfile, error: profileError } = await sb
+        .from("hosts")
+        .select("*")
+        .eq("user_id", user.id)
+        .maybeSingle();
 
-      // dummy stats (baad me real karenge)
-      document.getElementById("totalChats").innerText = 25;
-      document.getElementById("totalCalls").innerText = 10;
+      if (profileError || !hostProfile) {
+        console.error("Host profile fetch error:", profileError);
+        localStorage.removeItem("hostData");
+        alert("Host profile not found. Please login again.");
+        window.location.href = "login.html";
+        return;
+      }
 
-      let earn = host.plan === "premium" ? 600 : 400;
-      document.getElementById("totalEarn").innerText = "₹" + earn;
+      fillProfile(hostProfile, user.email || "");
     }
 
-    loadDashboard();
+    async function toggleOnlineStatus() {
+      try {
+        const { data: authData } = await sb.auth.getUser();
+        const user = authData?.user;
+
+        if (!user || !hostData) return;
+
+        const nextStatus = !(hostData.online || hostData.is_online);
+
+        toggleOnlineBtn.disabled = true;
+        toggleOnlineBtn.textContent = "Updating...";
+
+        const { error } = await sb
+          .from("hosts")
+          .update({
+            online: nextStatus,
+            is_online: nextStatus
+          })
+          .eq("user_id", user.id);
+
+        if (error) {
+          alert(error.message);
+          toggleOnlineBtn.disabled = false;
+          updateOnlineUI(!!(hostData.online || hostData.is_online));
+          return;
+        }
+
+        hostData.online = nextStatus;
+        hostData.is_online = nextStatus;
+        updateOnlineUI(nextStatus);
+        localStorage.setItem("hostData", JSON.stringify(hostData));
+        toggleOnlineBtn.disabled = false;
+      } catch (err) {
+        console.error(err);
+        toggleOnlineBtn.disabled = false;
+      }
+    }
+
+    async function logoutHost() {
+      try {
+        await sb.auth.signOut();
+      } catch (err) {
+        console.error(err);
+      }
+
+      localStorage.removeItem("hostData");
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("refreshBtn").addEventListener("click", fetchLatestProfile);
+    document.getElementById("profileRefreshBtn").addEventListener("click", fetchLatestProfile);
+    document.getElementById("toggleOnlineBtn").addEventListener("click", toggleOnlineStatus);
+    document.getElementById("logoutBtn").addEventListener("click", logoutHost);
+
+    (async function initDashboard() {
+      const savedHost = localStorage.getItem("hostData");
+      if (savedHost) {
+        try {
+          const parsed = JSON.parse(savedHost);
+          fillProfile(parsed, parsed.email || "");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      await fetchLatestProfile();
+    })();
   </script>
-<nav class="bottom-nav">
-  <a href="dashboard.html" class="active">Home</a>
-  <a href="earnings.html">Earnings</a>
-  <a href="profile.html">Profile</a>
-  <a href="support.html">Support</a>
-</nav>
 </body>
 </html>
