@@ -515,3 +515,65 @@ async function updateLoggedInUI() {
   showSlide(currentSlide);
 updateLoggedInUI();
 });
+const SUPABASE_URL = "https://vugexzusziumzzgturum.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1Z2V4enVzeml1bXp6Z3R1cnVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3OTk3ODYsImV4cCI6MjA5MTM3NTc4Nn0.CYChM5hKWj_Bk2I_osLUcoWGHE0OeeBDHEh1Vju6dkM";
+
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function loadLiveHosts() {
+  const hostGrid = document.getElementById("hostGrid");
+
+  const { data: hosts, error } = await sb
+    .from("hosts")
+    .select("*")
+    .eq("approved", true);
+
+  if (error) {
+    console.log(error);
+    return;
+  }
+
+  hosts.forEach(host => {
+    const status = host.online ? "Online" : "Offline";
+    const statusClass = host.online ? "online" : "offline";
+    const img = host.profile_image || "assets/riya.jpg";
+
+    const card = `
+      <div class="host-card glass" data-gender="${host.gender || 'all'}" data-status="${host.online ? 'online' : 'offline'}" data-tags="${host.plan === 'premium' ? 'popular' : 'new'}">
+        <div class="host-image-wrap">
+          <img src="${img}" class="host-image" alt="${host.display_name}">
+          <span class="host-status ${statusClass}">${status}</span>
+          <span class="live-dot ${host.online ? 'dot-online' : 'dot-offline'}"></span>
+        </div>
+
+        <div class="host-content">
+          <div class="host-top-row">
+            <div>
+              <h4>${host.display_name}</h4>
+              <p>${host.bio || "New TalkMitra Host"}</p>
+            </div>
+            <span class="rating">4.8★</span>
+          </div>
+
+          <div class="badge-row">
+            <span class="badge badge-new">${host.plan === 'premium' ? 'Premium' : 'Live Host'}</span>
+          </div>
+
+          <div class="price-row">
+            <div>Chat: ₹${host.chat_rate || 2}/min</div>
+            <div>Call: ₹${host.call_rate || 5}/min</div>
+          </div>
+
+          <div class="action-row">
+            <button class="card-btn ${host.online ? 'chat-btn' : 'disabled-btn offline-btn'}">Chat</button>
+            <button class="card-btn ${host.online ? 'call-btn' : 'disabled-btn offline-btn'}">Call</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    hostGrid.innerHTML += card;
+  });
+}
+
+loadLiveHosts();
