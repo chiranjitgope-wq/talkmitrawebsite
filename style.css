@@ -1141,3 +1141,320 @@ select.modal-input option {
     font-size: 12px;
   }
 }
+
+/* =========================
+   SIZE FIX + PROFILE FIX
+========================= */
+
+/* HOME TOP SECTION HEIGHT KAM */
+.topbar {
+  padding: 14px;
+  border-radius: 24px;
+}
+
+.wallet-hero {
+  gap: 12px;
+}
+
+.wallet-head h2 {
+  font-size: 21px;
+  margin-bottom: 3px;
+}
+
+.wallet-head p {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.hero-mini-tag {
+  margin-bottom: 6px;
+}
+
+.wallet-chip {
+  min-width: 160px;
+  padding: 7px 9px;
+}
+
+.sale-pill {
+  padding: 6px 10px;
+  font-size: 11px;
+}
+
+.wallet-amount {
+  font-size: 16px;
+}
+
+.wallet-plus-btn {
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+}
+
+.wallet-banner {
+  padding: 14px 16px;
+  border-radius: 20px;
+  min-height: 96px;
+}
+
+.banner-label {
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.wallet-banner h3 {
+  font-size: 17px;
+  max-width: 200px;
+}
+
+.banner-btn {
+  padding: 11px 16px;
+  font-size: 14px;
+}
+
+.quick-connect-box {
+  padding: 14px 16px;
+  border-radius: 20px;
+}
+
+.quick-icon {
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+}
+
+.quick-connect-copy h4 {
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.quick-connect-copy p {
+  font-size: 13px;
+}
+
+.quick-call-btn {
+  padding: 11px 16px;
+  font-size: 14px;
+}
+
+/* HOST CARD HEIGHT KAM */
+.host-card {
+  padding: 11px 12px;
+  border-radius: 24px;
+}
+
+.host-card-inner {
+  grid-template-columns: 74px 1fr;
+  gap: 12px;
+}
+
+.host-avatar-col {
+  gap: 6px;
+}
+
+.host-image-wrap {
+  width: 66px;
+  height: 66px;
+  border-radius: 18px;
+}
+
+.host-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+}
+
+.live-dot {
+  width: 13px;
+  height: 13px;
+}
+
+.host-status {
+  padding: 5px 11px;
+  font-size: 11px;
+}
+
+.rating-line {
+  font-size: 13px;
+}
+
+.host-top-row {
+  margin-bottom: 6px;
+}
+
+.host-name-line {
+  margin-bottom: 2px;
+}
+
+.host-top-row h4 {
+  font-size: 16px;
+}
+
+.host-age,
+.host-language,
+.host-location {
+  font-size: 13px;
+}
+
+.badge-row {
+  margin-bottom: 8px;
+}
+
+.badge {
+  padding: 4px 8px;
+  font-size: 10px;
+}
+
+.price-row {
+  margin-bottom: 9px;
+  gap: 6px;
+}
+
+.price-pill {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.action-row {
+  gap: 8px;
+}
+
+.card-btn {
+  padding: 11px 12px;
+  font-size: 13px;
+}
+
+/* PROFILE PAGE FIX */
+.profile-page,
+.profile-topbar,
+.profile-hero,
+.profile-section,
+.profile-stat-card {
+  color: #222733;
+}
+
+.profile-title h2,
+.profile-main-info h1,
+.profile-section-header h3,
+.profile-detail-left h4,
+.quick-link-card h4 {
+  color: #222733 !important;
+}
+
+.profile-title p,
+.profile-main-info p,
+.profile-detail-value,
+.profile-stat-card p {
+  color: #5f6678 !important;
+}
+
+.profile-detail-item,
+.quick-link-card {
+  background: rgba(255,255,255,0.72) !important;
+  border: 1px solid rgba(110,120,150,0.12) !important;
+}
+
+.profile-stat-card h3,
+.highlight-value {
+  color: #2f6fff !important;
+}
+
+.top-badge {
+  background: rgba(47, 111, 255, 0.10) !important;
+  color: #2f6fff !important;
+  border-color: rgba(47, 111, 255, 0.18) !important;
+}
+
+.profile-avatar {
+  background: linear-gradient(135deg, #ffd54f, #ffcc00) !important;
+  color: #222 !important;
+}
+
+.profile-online-dot {
+  border-color: #ffffff !important;
+}
+
+.profile-action-btn.dark {
+  background: rgba(255,255,255,0.72) !important;
+  color: #2a3140 !important;
+  border: 1px solid rgba(110,120,150,0.12) !important;
+}
+
+.profile-action-btn.red {
+  background: rgba(255, 89, 89, 0.10) !important;
+  color: #d64545 !important;
+  border: 1px solid rgba(214, 69, 69, 0.16) !important;
+}
+
+/* MOBILE */
+@media (max-width: 540px) {
+  .topbar {
+    padding: 12px;
+  }
+
+  .wallet-banner {
+    min-height: 88px;
+    padding: 12px 14px;
+  }
+
+  .wallet-banner h3 {
+    font-size: 15px;
+    max-width: 160px;
+  }
+
+  .banner-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .quick-connect-box {
+    padding: 12px 14px;
+  }
+
+  .quick-connect-copy h4 {
+    font-size: 14px;
+  }
+
+  .quick-connect-copy p {
+    font-size: 12px;
+  }
+
+  .quick-call-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .host-card {
+    padding: 10px;
+  }
+
+  .host-card-inner {
+    grid-template-columns: 68px 1fr;
+    gap: 10px;
+  }
+
+  .host-image-wrap {
+    width: 60px;
+    height: 60px;
+  }
+
+  .host-image {
+    width: 54px;
+    height: 54px;
+  }
+
+  .host-top-row h4 {
+    font-size: 15px;
+  }
+
+  .host-age,
+  .host-language,
+  .host-location,
+  .price-pill {
+    font-size: 12px;
+  }
+
+  .card-btn {
+    padding: 10px 10px;
+    font-size: 12px;
+  }
+}
