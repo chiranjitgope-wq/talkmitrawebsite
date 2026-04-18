@@ -302,6 +302,24 @@
       color: #111827;
       width: 100%;
     }
+    
+    .btn-successful {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  width: 100%;
+}
+
+.btn-purple {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: #fff;
+  width: 100%;
+}
+
+.btn-blue {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  width: 100%;
+}
 
     .activity-list {
       display: flex;
@@ -621,11 +639,24 @@
     </div>
 
     <div class="hero glass-card">
-      <div class="badge" id="welcomeBadge">Welcome Host</div>
-      <h1>Hello, <span id="heroHostName">Host</span></h1>
-      <p>
-        Manage your profile, check chat & call stats, control your host status and grow faster with premium and referrals.
-      </p>
+  <div class="badge" id="welcomeBadge">Welcome Host</div>
+
+  <h1>Hello, <span id="heroHostName">Host</span></h1>
+
+  <p>
+    Manage your profile, check chat & call stats, control your host status and grow faster with premium and referrals.
+  </p>
+
+  <p style="margin-top:10px; color:#facc15; font-weight:600;">
+    Earn maximum with TalkMitra. Upgrade to Premium for better visibility, more users and higher earning potential.
+  </p>
+
+  <div class="action-row" style="margin-top:14px;">
+    <button class="btn btn-gold" id="heroUpgradeBtn">
+      Upgrade to Premium ₹499
+    </button>
+  </div>
+</div>
 
       <div class="warning-box" id="approvalWarning">
         Your account is pending admin approval. Some features may stay limited until approval.
@@ -820,16 +851,21 @@
         </div>
       </div>
 
-      <div class="profile-tabs">
-        <button class="profile-tab-btn active" data-ptab="detailsPanel">Details</button>
-        <button class="profile-tab-btn" data-ptab="upgradePanel">Upgrade</button>
-        <button class="profile-tab-btn" data-ptab="referPanel">Refer</button>
-        <button class="profile-tab-btn" data-ptab="earningsPanel">Earnings</button>
-      </div>
+      <div class="action-row" style="margin-top:0; margin-bottom:14px;">
+  <button class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
+  <button class="btn btn-gold" id="topUpgradeBtn">Upgrade ₹499</button>
+</div>
+
+<div class="profile-tabs">
+  <button class="profile-tab-btn" data-ptab="detailsPanel">Details</button>
+  <button class="profile-tab-btn" data-ptab="upgradePanel">Upgrade</button>
+  <button class="profile-tab-btn" data-ptab="referPanel">Refer</button>
+  <button class="profile-tab-btn" data-ptab="earningsPanel">Earnings</button>
+</div>
 
       <div class="success-box" id="profileSuccessBox"></div>
 
-      <div class="profile-panel active" id="detailsPanel">
+      <div class="profile-panel" id="detailsPanel">
         <div class="profile-grid">
           <div class="profile-field">
             <div class="profile-label">Display Name</div>
@@ -893,9 +929,8 @@
         </div>
 
         <div class="action-row">
-          <button class="btn btn-secondary" id="editProfileBtn">Edit Profile</button>
-          <button class="btn btn-primary" id="saveProfileBtn" style="display:none;">Save Changes</button>
-        </div>
+  <button class="btn btn-successful" id="saveProfileBtn" style="display:none;">Save Changes</button>
+</div>
 
         <div class="action-row">
           <button class="btn btn-secondary" id="cancelEditBtn" style="display:none;">Cancel</button>
@@ -951,7 +986,7 @@
           </div>
 
           <div class="action-row">
-            <button class="btn btn-primary" id="shareRefBtn">Share Referral Message</button>
+            <button class="btn btn-purple" id="shareRefBtn">Share Referral Message</button>
           </div>
         </div>
       </div>
@@ -977,7 +1012,7 @@
         </div>
 
         <div class="action-row">
-          <button class="btn btn-secondary" id="supportBtn">Support</button>
+          <button class="btn btn-blue" id="supportBtn">Support</button>
         </div>
 
         <div class="action-row" style="margin-top:12px;">
@@ -1028,6 +1063,8 @@
     const logoutBtn = document.getElementById("logoutBtn");
     const supportBtn = document.getElementById("supportBtn");
     const upgradePremiumBtn = document.getElementById("upgradePremiumBtn");
+    const heroUpgradeBtn = document.getElementById("heroUpgradeBtn");
+    const topUpgradeBtn = document.getElementById("topUpgradeBtn");
     const copyRefBtn = document.getElementById("copyRefBtn");
     const shareRefBtn = document.getElementById("shareRefBtn");
     const uploadPhotoBtn = document.getElementById("uploadPhotoBtn");
@@ -1371,9 +1408,15 @@
     }
 
     editProfileBtn.addEventListener("click", () => {
-      setEditMode(true);
-      document.querySelector('[data-ptab="detailsPanel"]').click();
-    });
+  setEditMode(true);
+  profileTabButtons.forEach((b) => b.classList.remove("active"));
+  profilePanels.forEach((panel) => panel.classList.remove("active"));
+
+  const detailsBtn = document.querySelector('[data-ptab="detailsPanel"]');
+  if (detailsBtn) detailsBtn.classList.add("active");
+
+  document.getElementById("detailsPanel").classList.add("active");
+});
 
     cancelEditBtn.addEventListener("click", () => {
       if (hostData) {
@@ -1390,6 +1433,14 @@
     logoutBtn.addEventListener("click", logoutHost);
     supportBtn.addEventListener("click", openSupport);
     upgradePremiumBtn.addEventListener("click", openUpgradeInfo);
+
+    if (heroUpgradeBtn) {
+    heroUpgradeBtn.addEventListener("click", openUpgradeInfo);
+   }
+
+   if (topUpgradeBtn) {
+   topUpgradeBtn.addEventListener("click", openUpgradeInfo);
+   }
     copyRefBtn.addEventListener("click", handleCopyReferral);
     shareRefBtn.addEventListener("click", handleShareReferral);
 
