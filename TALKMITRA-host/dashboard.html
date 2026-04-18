@@ -16,7 +16,7 @@
       background: linear-gradient(180deg, #0f172a, #111827, #1e293b);
       color: #fff;
       min-height: 100vh;
-      padding-bottom: 90px;
+      padding-bottom: 100px;
     }
 
     .page {
@@ -302,24 +302,24 @@
       color: #111827;
       width: 100%;
     }
-    
+
     .btn-successful {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #fff;
-  width: 100%;
-}
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      width: 100%;
+    }
 
-.btn-purple {
-  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-  color: #fff;
-  width: 100%;
-}
+    .btn-purple {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: #fff;
+      width: 100%;
+    }
 
-.btn-blue {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: #fff;
-  width: 100%;
-}
+    .btn-blue {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: #fff;
+      width: 100%;
+    }
 
     .activity-list {
       display: flex;
@@ -360,37 +360,36 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       backdrop-filter: blur(12px);
       border-top: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      justify-content: center;
       z-index: 999;
     }
 
     .bottom-nav-inner {
-      width: 100%;
       max-width: 480px;
+      margin: auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
-      padding: 10px 12px 12px;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
     }
 
     .nav-btn {
       border: none;
-      background: transparent;
-      color: #94a3b8;
+      background: rgba(255,255,255,0.04);
+      color: #cbd5e1;
       font-size: 13px;
       font-weight: 700;
-      padding: 10px 6px;
+      padding: 12px 6px;
       border-radius: 14px;
       cursor: pointer;
+      width: 100%;
     }
 
     .nav-btn.active {
       color: #fff;
-      background: rgba(255,255,255,0.08);
+      background: linear-gradient(135deg,#22c55e,#16a34a);
     }
 
     .profile-top-card {
@@ -513,6 +512,10 @@
       padding: 11px 12px;
       font-size: 14px;
       outline: none;
+    }
+
+    .profile-select option {
+      color: #111827;
     }
 
     .profile-input[disabled],
@@ -639,24 +642,20 @@
     </div>
 
     <div class="hero glass-card">
-  <div class="badge" id="welcomeBadge">Welcome Host</div>
+      <div class="badge" id="welcomeBadge">Welcome Host</div>
+      <h1>Hello, <span id="heroHostName">Host</span></h1>
 
-  <h1>Hello, <span id="heroHostName">Host</span></h1>
+      <p>
+        Manage your profile, check chat & call stats, control your host status and grow faster with premium and referrals.
+      </p>
 
-  <p>
-    Manage your profile, check chat & call stats, control your host status and grow faster with premium and referrals.
-  </p>
+      <p style="margin-top:10px; color:#facc15; font-weight:600;">
+        Earn maximum with TalkMitra. Upgrade to Premium for better visibility, more users and higher earning potential.
+      </p>
 
-  <p style="margin-top:10px; color:#facc15; font-weight:600;">
-    Earn maximum with TalkMitra. Upgrade to Premium for better visibility, more users and higher earning potential.
-  </p>
-
-  <div class="action-row" style="margin-top:14px;">
-    <button class="btn btn-gold" id="heroUpgradeBtn">
-      Upgrade to Premium ₹499
-    </button>
-  </div>
-</div>
+      <div class="action-row" style="margin-top:14px;">
+        <button class="btn btn-gold" id="heroUpgradeBtn">Upgrade to Premium ₹499</button>
+      </div>
 
       <div class="warning-box" id="approvalWarning">
         Your account is pending admin approval. Some features may stay limited until approval.
@@ -852,16 +851,16 @@
       </div>
 
       <div class="action-row" style="margin-top:0; margin-bottom:14px;">
-  <button class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
-  <button class="btn btn-gold" id="topUpgradeBtn">Upgrade ₹499</button>
-</div>
+        <button class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
+        <button class="btn btn-gold" id="topUpgradeBtn">Upgrade ₹499</button>
+      </div>
 
-<div class="profile-tabs">
-  <button class="profile-tab-btn" data-ptab="detailsPanel">Details</button>
-  <button class="profile-tab-btn" data-ptab="upgradePanel">Upgrade</button>
-  <button class="profile-tab-btn" data-ptab="referPanel">Refer</button>
-  <button class="profile-tab-btn" data-ptab="earningsPanel">Earnings</button>
-</div>
+      <div class="profile-tabs">
+        <button class="profile-tab-btn" data-ptab="detailsPanel">Details</button>
+        <button class="profile-tab-btn" data-ptab="upgradePanel">Upgrade</button>
+        <button class="profile-tab-btn" data-ptab="referPanel">Refer</button>
+        <button class="profile-tab-btn" data-ptab="earningsPanel">Earnings</button>
+      </div>
 
       <div class="success-box" id="profileSuccessBox"></div>
 
@@ -929,8 +928,8 @@
         </div>
 
         <div class="action-row">
-  <button class="btn btn-successful" id="saveProfileBtn" style="display:none;">Save Changes</button>
-</div>
+          <button class="btn btn-successful" id="saveProfileBtn" style="display:none;">Save Changes</button>
+        </div>
 
         <div class="action-row">
           <button class="btn btn-secondary" id="cancelEditBtn" style="display:none;">Cancel</button>
@@ -1154,7 +1153,6 @@
       onlinePill.textContent = isOnline ? "Online" : "Offline";
       onlinePill.className = "status-pill " + (isOnline ? "status-online" : "status-offline");
       toggleOnlineBtn.textContent = isOnline ? "Go Offline" : "Go Online";
-
       document.getElementById("profileOnlineChip").textContent = isOnline ? "Online" : "Offline";
     }
 
@@ -1164,7 +1162,6 @@
       approvalPill.className = "status-pill " + (isApproved ? "status-approved" : "status-pending");
       approvalWarning.style.display = isApproved ? "none" : "block";
       welcomeBadge.textContent = isApproved ? "Approved Host" : "Pending Approval";
-
       document.getElementById("profileApprovalChip").textContent = isApproved ? "Approved" : "Pending";
     }
 
@@ -1215,7 +1212,6 @@
       document.getElementById("editBio").value = inputValue(data.bio);
 
       document.getElementById("refCodeText").textContent = referralCode;
-
       document.getElementById("profileAvatar").src = profileImg;
 
       updateApprovalUI(approved);
@@ -1286,12 +1282,26 @@
         updateOnlineUI(nextStatus);
         document.getElementById("profileHeaderSub").textContent = `${capitalizeText(hostData.plan || "free")} Plan • ${hostData.approved ? "Approved" : "Pending"} • ${nextStatus ? "Online" : "Offline"}`;
         localStorage.setItem("hostData", JSON.stringify(hostData));
-
         toggleOnlineBtn.disabled = false;
       } catch (err) {
         console.error(err);
         toggleOnlineBtn.disabled = false;
       }
+    }
+
+    function previewProfileImage(file) {
+      if (!file.type.startsWith("image/")) {
+        alert("Please choose an image file");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        tempImagePreview = e.target.result;
+        document.getElementById("profileAvatar").src = tempImagePreview;
+        showMessage(profileSuccessBox, "Photo selected. Click Save Changes to save it.");
+      };
+      reader.readAsDataURL(file);
     }
 
     async function saveProfile() {
@@ -1302,6 +1312,8 @@
 
         saveProfileBtn.disabled = true;
         saveProfileBtn.textContent = "Saving...";
+
+        const oldImage = hostData.profile_image || "assets/logo.png";
 
         const payload = {
           display_name: document.getElementById("editDisplayName").value.trim(),
@@ -1330,24 +1342,35 @@
           .select("*");
 
         if (error) {
-          alert(error.message);
+          console.error("Save profile error:", error);
+          document.getElementById("profileAvatar").src = oldImage;
+          tempImagePreview = null;
+          alert("Profile save failed: " + error.message);
           saveProfileBtn.disabled = false;
           saveProfileBtn.textContent = "Save Changes";
           return;
         }
 
-        if (updatedRows && updatedRows[0]) {
-          fillProfile(updatedRows[0], authUserEmail);
-        } else {
-          await fetchLatestProfile();
+        if (!updatedRows || !updatedRows.length) {
+          document.getElementById("profileAvatar").src = oldImage;
+          tempImagePreview = null;
+          alert("Profile save failed. No updated row returned.");
+          saveProfileBtn.disabled = false;
+          saveProfileBtn.textContent = "Save Changes";
+          return;
         }
 
+        hostData = updatedRows[0];
+        fillProfile(hostData, authUserEmail);
         tempImagePreview = null;
+
         showMessage(profileSuccessBox, "Profile updated successfully");
         saveProfileBtn.disabled = false;
         saveProfileBtn.textContent = "Save Changes";
       } catch (err) {
         console.error(err);
+        document.getElementById("profileAvatar").src = hostData?.profile_image || "assets/logo.png";
+        tempImagePreview = null;
         alert("Something went wrong while saving profile.");
         saveProfileBtn.disabled = false;
         saveProfileBtn.textContent = "Save Changes";
@@ -1376,7 +1399,7 @@
 
     function handleShareReferral() {
       const code = document.getElementById("refCodeText").textContent.trim();
-      const text = `Join TalkMitra as a host with my referral code: ${code}. Premium upgrade ₹499 lene par referral reward applicable hota hai.`;
+      const text = `Join TalkMitra as a host with my referral code: ${code}. Aapke referral ne Premium Upgrade ₹499 liya tabhi ₹150 reward milega.`;
 
       if (navigator.share) {
         navigator.share({ text });
@@ -1394,29 +1417,25 @@
     }
 
     function openUpgradeInfo() {
-      alert("Premium Upgrade ₹499\\n\\nBenefits:\\n- 60% earning share\\n- Top listing priority\\n- VIP badge\\n- More profile visibility\\n\\nPayment button integration baad me connect karenge.");
-    }
-
-    function previewProfileImage(file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        tempImagePreview = e.target.result;
-        document.getElementById("profileAvatar").src = tempImagePreview;
-        showMessage(profileSuccessBox, "Photo preview updated. Save changes to keep it.");
-      };
-      reader.readAsDataURL(file);
+      profileTabButtons.forEach((b) => b.classList.remove("active"));
+      profilePanels.forEach((panel) => panel.classList.remove("active"));
+      const upgradeTab = document.querySelector('[data-ptab="upgradePanel"]');
+      if (upgradeTab) upgradeTab.classList.add("active");
+      document.getElementById("upgradePanel").classList.add("active");
+      showSection("profileSection");
     }
 
     editProfileBtn.addEventListener("click", () => {
-  setEditMode(true);
-  profileTabButtons.forEach((b) => b.classList.remove("active"));
-  profilePanels.forEach((panel) => panel.classList.remove("active"));
+      setEditMode(true);
+      profileTabButtons.forEach((b) => b.classList.remove("active"));
+      profilePanels.forEach((panel) => panel.classList.remove("active"));
 
-  const detailsBtn = document.querySelector('[data-ptab="detailsPanel"]');
-  if (detailsBtn) detailsBtn.classList.add("active");
+      const detailsBtn = document.querySelector('[data-ptab="detailsPanel"]');
+      if (detailsBtn) detailsBtn.classList.add("active");
 
-  document.getElementById("detailsPanel").classList.add("active");
-});
+      document.getElementById("detailsPanel").classList.add("active");
+      showSection("profileSection");
+    });
 
     cancelEditBtn.addEventListener("click", () => {
       if (hostData) {
@@ -1433,14 +1452,8 @@
     logoutBtn.addEventListener("click", logoutHost);
     supportBtn.addEventListener("click", openSupport);
     upgradePremiumBtn.addEventListener("click", openUpgradeInfo);
-
-    if (heroUpgradeBtn) {
-    heroUpgradeBtn.addEventListener("click", openUpgradeInfo);
-   }
-
-   if (topUpgradeBtn) {
-   topUpgradeBtn.addEventListener("click", openUpgradeInfo);
-   }
+    if (heroUpgradeBtn) heroUpgradeBtn.addEventListener("click", openUpgradeInfo);
+    if (topUpgradeBtn) topUpgradeBtn.addEventListener("click", openUpgradeInfo);
     copyRefBtn.addEventListener("click", handleCopyReferral);
     shareRefBtn.addEventListener("click", handleShareReferral);
 
