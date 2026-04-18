@@ -7,213 +7,208 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="floating-bg">
-    <span class="float-emoji e1">💛</span>
-    <span class="float-emoji e2">💬</span>
-    <span class="float-emoji e3">📞</span>
-    <span class="float-emoji e4">❤️</span>
-    <span class="float-emoji e5">💬</span>
-    <span class="float-emoji e6">📱</span>
-    <span class="float-emoji e7">💕</span>
-    <span class="float-emoji e8">☎️</span>
-    <span class="float-emoji e9">💭</span>
-    <span class="float-emoji e10">💛</span>
-  </div>
+  <div class="page-bg"></div>
+  <div class="soft-blob blob-1"></div>
+  <div class="soft-blob blob-2"></div>
+  <div class="soft-blob blob-3"></div>
 
-  <div class="bg-glow glow-one"></div>
-  <div class="bg-glow glow-two"></div>
-  <div class="bg-glow glow-three"></div>
-
-  <div class="app">
-    <!-- Header -->
-    <header class="topbar glass">
-      <div class="brand">
-        <div class="logo-wrap">
-          <img src="assets/logo.png" alt="TalkMitra Logo" class="logo-img" />
+  <div class="app-shell">
+    <header class="topbar soft-card">
+      <div class="brand-block">
+        <div class="brand-left">
+          <div class="logo-wrap">
+            <img src="assets/logo.png" alt="TalkMitra Logo" class="logo-img" />
+          </div>
+          <div class="brand-text">
+            <h1>TalkMitra</h1>
+            <p>Talk, chat and connect instantly</p>
+          </div>
         </div>
-        <div class="brand-text">
-          <h1>TalkMitra</h1>
-          <p>Chat & Voice Call Experience</p>
+
+        <div class="header-actions">
+          <button class="small-btn ghost-btn" id="openLogin">Login</button>
+          <button class="small-btn primary-btn" id="openRegister">Register</button>
         </div>
       </div>
 
-      <div class="header-buttons">
-        <button class="small-btn ghost-btn" id="openLogin">Login</button>
-        <button class="small-btn gold-btn" id="openRegister">Register</button>
-      </div>
+      <section class="wallet-hero">
+        <div class="wallet-head">
+          <div>
+            <span class="hero-mini-tag">Wallet</span>
+            <h2>Premium connect experience</h2>
+            <p>Recharge and start chat or call with active hosts.</p>
+          </div>
+
+          <div class="wallet-chip">
+            <span class="sale-pill">% Sale</span>
+            <span class="wallet-amount">₹<span id="walletBalanceTop">20</span></span>
+            <button class="wallet-plus-btn" id="walletTopBtn" type="button">+</button>
+          </div>
+        </div>
+
+        <div class="wallet-banner">
+          <div class="wallet-banner-copy">
+            <span class="banner-label">Avail cashbacks</span>
+            <h3>upto 60% on recharges!</h3>
+          </div>
+          <button class="banner-btn" id="walletBannerBtn" type="button">Buy Now</button>
+        </div>
+
+        <div class="quick-connect-box">
+          <div class="quick-connect-copy">
+            <span class="quick-icon">✧</span>
+            <div>
+              <h4>Connect & Make Friends</h4>
+              <p>@ ₹5/min only!</p>
+            </div>
+          </div>
+          <button class="quick-call-btn" type="button">Random Call</button>
+        </div>
+      </section>
     </header>
 
-    <!-- Slider -->
-    <section class="top-slider glass">
-      <div class="slider-track">
-        <div class="slide active">
-          <img src="assets/riya.jpg" alt="Slide 1" class="slide-img" />
-          <div class="slide-overlay">
-            <span class="slide-badge">TalkMitra</span>
-            <h2>Chat with Active Hosts</h2>
-            <p>Easy conversations, voice calls and smooth experience.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="assets/aman.jpg" alt="Slide 2" class="slide-img" />
-          <div class="slide-overlay">
-            <span class="slide-badge">Voice Calling</span>
-            <h2>Connect Anytime</h2>
-            <p>Simple layout, fast actions and engaging platform feel.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="assets/neha.jpg" alt="Slide 3" class="slide-img" />
-          <div class="slide-overlay">
-            <span class="slide-badge">Premium Experience</span>
-            <h2>Explore Real Connections</h2>
-            <p>Browse hosts and enjoy a modern clean interface.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="slider-dots">
-        <span class="dot active" data-slide="0"></span>
-        <span class="dot" data-slide="1"></span>
-        <span class="dot" data-slide="2"></span>
-      </div>
-    </section>
-
-    <!-- Hosts directly below slider -->
-    <section class="filters glass">
-      <div class="section-top">
-        <h3>Browse Hosts</h3>
+    <section class="filters-wrap">
+      <div class="section-head">
+        <h3>Featured Experts</h3>
         <p>Choose your preferred host and start connecting.</p>
       </div>
 
-      <div class="filter-group">
-        <button class="filter-btn active" data-gender="all">All</button>
-        <button class="filter-btn" data-gender="female">Female</button>
-        <button class="filter-btn" data-gender="male">Male</button>
-      </div>
+      <div class="filter-scroll">
+        <div class="filter-group">
+          <button class="filter-btn active" data-gender="all">All</button>
+          <button class="filter-btn" data-gender="female">Female</button>
+          <button class="filter-btn" data-gender="male">Male</button>
+        </div>
 
-      <div class="filter-group">
-        <button class="status-btn active" data-filter="all">All</button>
-        <button class="status-btn" data-filter="online">Online</button>
-        <button class="status-btn" data-filter="new">New</button>
-        <button class="status-btn" data-filter="popular">Popular</button>
-        <button class="status-btn" data-filter="voice">Voice Active</button>
+        <div class="filter-group second-row">
+          <button class="status-btn active" data-filter="all">All</button>
+          <button class="status-btn" data-filter="online">Online</button>
+          <button class="status-btn" data-filter="new">New</button>
+          <button class="status-btn" data-filter="popular">Popular</button>
+          <button class="status-btn" data-filter="voice">Voice Active</button>
+        </div>
       </div>
     </section>
 
     <section class="host-grid" id="hostGrid">
-      <div class="host-card glass" data-gender="female" data-status="online" data-tags="new voice">
-        <div class="host-image-wrap">
-          <img src="assets/riya.jpg" alt="Riya" class="host-image" />
-          <span class="host-status online">Online</span>
-          <span class="live-dot dot-online"></span>
-        </div>
-        <div class="host-content">
-          <div class="host-top-row">
-            <div>
-              <h4>Riya</h4>
-              <p>Friendly conversations</p>
+      <div class="host-card" data-gender="female" data-status="online" data-tags="new voice">
+        <div class="host-card-inner">
+          <div class="host-avatar-col">
+            <div class="host-image-wrap">
+              <img src="assets/riya.jpg" alt="Riya" class="host-image" />
+              <span class="live-dot dot-online"></span>
             </div>
-            <span class="rating">4.9★</span>
+            <span class="host-status online">Online</span>
+            <span class="rating-line">⭐ <span>4.9</span></span>
           </div>
-          <div class="badge-row">
-            <span class="badge badge-new">New</span>
-            <span class="badge badge-voice">Voice Active</span>
-          </div>
-          <div class="price-row">
-            <div>Chat: ₹5/min</div>
-            <div>Call: ₹10/min</div>
-          </div>
-          <div class="action-row">
-            <button class="card-btn chat-btn">Chat</button>
-            <button class="card-btn call-btn">Call</button>
+
+          <div class="host-content">
+            <div class="host-top-row">
+              <div class="host-main-text">
+                <div class="host-name-line">
+                  <h4>Riya</h4>
+                  <span class="host-age">20 Y</span>
+                </div>
+                <p class="host-location">Siliguri, WB</p>
+              </div>
+              <span class="host-language">Hindi</span>
+            </div>
+
+            <div class="badge-row">
+              <span class="badge badge-new">New</span>
+              <span class="badge badge-voice">Voice Active</span>
+            </div>
+
+            <div class="price-row">
+              <span class="price-pill">Chat ₹5/min</span>
+              <span class="price-pill">Call ₹10/min</span>
+            </div>
+
+            <div class="action-row">
+              <button class="card-btn chat-btn">Chat Now</button>
+              <button class="card-btn call-btn">Call Now</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="host-card glass" data-gender="male" data-status="online" data-tags="popular voice">
-        <div class="host-image-wrap">
-          <img src="assets/aman.jpg" alt="Aman" class="host-image" />
-          <span class="host-status online">Online</span>
-          <span class="live-dot dot-online"></span>
-        </div>
-        <div class="host-content">
-          <div class="host-top-row">
-            <div>
-              <h4>Aman</h4>
-              <p>Fun and engaging talks</p>
+      <div class="host-card" data-gender="female" data-status="online" data-tags="popular voice">
+        <div class="host-card-inner">
+          <div class="host-avatar-col">
+            <div class="host-image-wrap">
+              <img src="assets/neha.jpg" alt="Neha" class="host-image" />
+              <span class="live-dot dot-online"></span>
             </div>
-            <span class="rating">4.8★</span>
+            <span class="host-status online">Online</span>
+            <span class="rating-line">⭐ <span>4.8</span></span>
           </div>
-          <div class="badge-row">
-            <span class="badge badge-popular">Popular</span>
-            <span class="badge badge-voice">Voice Active</span>
-          </div>
-          <div class="price-row">
-            <div>Chat: ₹5/min</div>
-            <div>Call: ₹10/min</div>
-          </div>
-          <div class="action-row">
-            <button class="card-btn chat-btn">Chat</button>
-            <button class="card-btn call-btn">Call</button>
+
+          <div class="host-content">
+            <div class="host-top-row">
+              <div class="host-main-text">
+                <div class="host-name-line">
+                  <h4>Neha</h4>
+                  <span class="host-age">22 Y</span>
+                </div>
+                <p class="host-location">Bhopal, MP</p>
+              </div>
+              <span class="host-language">Hindi</span>
+            </div>
+
+            <div class="badge-row">
+              <span class="badge badge-popular">Popular</span>
+              <span class="badge badge-voice">Voice Active</span>
+            </div>
+
+            <div class="price-row">
+              <span class="price-pill">Chat ₹5/min</span>
+              <span class="price-pill">Call ₹10/min</span>
+            </div>
+
+            <div class="action-row">
+              <button class="card-btn chat-btn">Chat Now</button>
+              <button class="card-btn call-btn">Call Now</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="host-card glass" data-gender="female" data-status="offline" data-tags="new">
-        <div class="host-image-wrap">
-          <img src="assets/neha.jpg" alt="Neha" class="host-image" />
-          <span class="host-status offline">Offline</span>
-          <span class="live-dot dot-offline"></span>
-        </div>
-        <div class="host-content">
-          <div class="host-top-row">
-            <div>
-              <h4>Neha</h4>
-              <p>Soft and casual talk</p>
+      <div class="host-card" data-gender="male" data-status="offline" data-tags="new">
+        <div class="host-card-inner">
+          <div class="host-avatar-col">
+            <div class="host-image-wrap">
+              <img src="assets/aman.jpg" alt="Aman" class="host-image" />
+              <span class="live-dot dot-offline"></span>
             </div>
-            <span class="rating">4.7★</span>
+            <span class="host-status offline">Offline</span>
+            <span class="rating-line">⭐ <span>4.7</span></span>
           </div>
-          <div class="badge-row">
-            <span class="badge badge-new">New</span>
-          </div>
-          <div class="price-row">
-            <div>Chat: ₹5/min</div>
-            <div>Call: ₹10/min</div>
-          </div>
-          <div class="action-row">
-            <button class="card-btn disabled-btn offline-btn">Chat</button>
-            <button class="card-btn disabled-btn offline-btn">Call</button>
-          </div>
-        </div>
-      </div>
 
-      <div class="host-card glass" data-gender="male" data-status="online" data-tags="popular">
-        <div class="host-image-wrap">
-          <img src="assets/sahil.jpg" alt="Sahil" class="host-image" />
-          <span class="host-status online">Online</span>
-          <span class="live-dot dot-online"></span>
-        </div>
-        <div class="host-content">
-          <div class="host-top-row">
-            <div>
-              <h4>Sahil</h4>
-              <p>Smart and energetic talk</p>
+          <div class="host-content">
+            <div class="host-top-row">
+              <div class="host-main-text">
+                <div class="host-name-line">
+                  <h4>Aman</h4>
+                  <span class="host-age">24 Y</span>
+                </div>
+                <p class="host-location">Agartala, TR</p>
+              </div>
+              <span class="host-language">Hindi</span>
             </div>
-            <span class="rating">4.8★</span>
-          </div>
-          <div class="badge-row">
-            <span class="badge badge-popular">Popular</span>
-          </div>
-          <div class="price-row">
-            <div>Chat: ₹5/min</div>
-            <div>Call: ₹10/min</div>
-          </div>
-          <div class="action-row">
-            <button class="card-btn chat-btn">Chat</button>
-            <button class="card-btn call-btn">Call</button>
+
+            <div class="badge-row">
+              <span class="badge badge-new">New</span>
+            </div>
+
+            <div class="price-row">
+              <span class="price-pill">Chat ₹5/min</span>
+              <span class="price-pill">Call ₹10/min</span>
+            </div>
+
+            <div class="action-row">
+              <button class="card-btn disabled-btn offline-btn">Chat Now</button>
+              <button class="card-btn disabled-btn offline-btn">Call Now</button>
+            </div>
           </div>
         </div>
       </div>
@@ -221,24 +216,23 @@
 
     <p class="empty-msg hidden" id="emptyMsg">No hosts found for this filter.</p>
 
-    <!-- stats moved below -->
     <section class="stats-grid">
-      <div class="stat-card glass">
+      <div class="stat-card soft-card">
         <h4>1200+</h4>
         <p>Chats Started</p>
       </div>
-      <div class="stat-card glass">
+      <div class="stat-card soft-card">
         <h4>80+</h4>
         <p>Hosts Joined</p>
       </div>
-      <div class="stat-card glass">
+      <div class="stat-card soft-card">
         <h4>4.8★</h4>
         <p>Average Rating</p>
       </div>
     </section>
 
-    <section class="recent-activity glass">
-      <div class="section-top">
+    <section class="recent-activity soft-card">
+      <div class="section-head">
         <h3>Recent Activity</h3>
         <p>Latest activity from users on the platform.</p>
       </div>
@@ -259,8 +253,8 @@
       </div>
     </section>
 
-    <section class="faq-section glass" id="faqSection">
-      <div class="section-top">
+    <section class="faq-section soft-card" id="faqSection">
+      <div class="section-head">
         <h3>FAQ</h3>
         <p>Quick answers to common questions.</p>
       </div>
@@ -294,7 +288,7 @@
       </div>
     </section>
 
-    <footer class="footer glass">
+    <footer class="footer soft-card">
       <div class="footer-brand">
         <h3>TalkMitra</h3>
         <p>Modern chat and voice call platform experience.</p>
@@ -309,60 +303,55 @@
       <p class="footer-copy">© 2026 TalkMitra. All rights reserved.</p>
     </footer>
 
-    <nav class="bottom-nav glass">
-      <a href="#" class="nav-link active">Home</a>
-      <a href="#" class="nav-link">Chats</a>
-      <a href="#" class="nav-link">Calling</a>
-      <a href="#" class="nav-link wallet-nav" id="walletNav">Wallet</a>
-      <a href="profile.html" class="nav-link">Profile</a>
-    </nav>
-  </div>
+    <nav class="bottom-nav soft-card">
+  <a href="index.html" class="nav-link active">Home</a>
+  <a href="javascript:void(0)" class="nav-link" id="chatNavBtn">Chats</a>
+  <a href="javascript:void(0)" class="nav-link" id="callingNavBtn">Calling</a>
+  <a href="javascript:void(0)" class="nav-link wallet-nav" id="walletNav">Wallet</a>
+  <a href="profile.html" class="nav-link">Profile</a>
+</nav>
 
   <div class="toast hidden" id="toast"></div>
 
-  <!-- login -->
-<div class="modal hidden" id="loginModal">
-  <div class="modal-box">
-    <button class="close-btn" data-close="loginModal">×</button>
-    <h3>Login</h3>
-    <p class="modal-subtext">Login to continue your experience.</p>
-    <input type="text" id="loginEmail" placeholder="Enter email" class="modal-input" />
-    <input type="password" id="loginPassword" placeholder="Enter password" class="modal-input" />
-    <button class="main-btn gold-btn full-btn" id="loginSubmit">Login Now</button>
+  <div class="modal hidden" id="loginModal">
+    <div class="modal-box">
+      <button class="close-btn" data-close="loginModal">×</button>
+      <h3>Login</h3>
+      <p class="modal-subtext">Login to continue your experience.</p>
+      <input type="text" id="loginEmail" placeholder="Enter email" class="modal-input" />
+      <input type="password" id="loginPassword" placeholder="Enter password" class="modal-input" />
+      <button class="main-btn primary-btn full-btn" id="loginSubmit">Login Now</button>
+    </div>
   </div>
-</div>
 
-  <!-- register -->
-<div class="modal hidden" id="registerModal">
-  <div class="modal-box">
-    <button class="close-btn" data-close="registerModal">×</button>
-    <h3>Register</h3>
-    <p class="modal-subtext">Create your account to start exploring.</p>
+  <div class="modal hidden" id="registerModal">
+    <div class="modal-box">
+      <button class="close-btn" data-close="registerModal">×</button>
+      <h3>Register</h3>
+      <p class="modal-subtext">Create your account to start exploring.</p>
 
-    <input type="text" id="registerName" placeholder="Full name" class="modal-input" />
-    <input type="text" id="registerEmail" placeholder="Enter email" class="modal-input" />
-    <input type="password" id="registerPassword" placeholder="Create password" class="modal-input" />
+      <input type="text" id="registerName" placeholder="Full name" class="modal-input" />
+      <input type="text" id="registerEmail" placeholder="Enter email" class="modal-input" />
+      <input type="password" id="registerPassword" placeholder="Create password" class="modal-input" />
 
-    <select id="registerGender" class="modal-input">
-      <option value="">Select Gender</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
+      <select id="registerGender" class="modal-input">
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
 
-    <button class="main-btn gold-btn full-btn" id="registerSubmit">Create Account</button>
+      <button class="main-btn primary-btn full-btn" id="registerSubmit">Create Account</button>
+    </div>
   </div>
-</div>
 
-  <!-- wallet popup -->
   <div class="modal hidden" id="walletModal">
     <div class="modal-box wallet-modal-box">
       <button class="close-btn wallet-close-visible" data-close="walletModal">×</button>
 
       <div class="wallet-popup-banner">
-        <img src="assets/riya.jpg" alt="Recharge Offer" class="wallet-popup-image" />
-        <div class="wallet-popup-overlay">
+        <div class="wallet-popup-overlay pastel">
           <span class="wallet-popup-badge">Special Offer</span>
-          <h3>Recharge Today & Get 20% Bonus</h3>
+          <h3>Recharge today and get bonus</h3>
           <p>Choose your amount and continue chatting and calling.</p>
         </div>
       </div>
@@ -379,11 +368,11 @@
         <button class="recharge-option" data-amount="500">₹500</button>
       </div>
 
-      <button class="main-btn gold-btn full-btn" id="applyRecharge">Recharge Now</button>
+      <button class="main-btn primary-btn full-btn" id="applyRecharge">Recharge Now</button>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
