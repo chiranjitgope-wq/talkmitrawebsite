@@ -152,13 +152,37 @@
           return;
         }
 
-        localStorage.setItem("hostData", JSON.stringify(hostProfile));
-        setStatus("Login successful", "success");
-        loginBtn.textContent = "Login Successful";
+        const safeHostData = {
+  id: hostProfile.id,
+  user_id: hostProfile.user_id,
+  display_name: hostProfile.display_name,
+  phone: hostProfile.phone,
+  age: hostProfile.age,
+  gender: hostProfile.gender,
+  city: hostProfile.city,
+  bio: hostProfile.bio,
+  plan: hostProfile.plan,
+  approved: hostProfile.approved,
+  online: hostProfile.online,
+  is_online: hostProfile.is_online,
+  chat_rate: hostProfile.chat_rate,
+  call_rate: hostProfile.call_rate,
+  created_at: hostProfile.created_at,
+  profile_image: ""
+};
 
-        setTimeout(() => {
-          window.location.href = "dashboard.html";
-        }, 1000);
+try {
+  localStorage.setItem("hostData", JSON.stringify(safeHostData));
+} catch (storageErr) {
+  console.error("Local storage save failed:", storageErr);
+}
+
+setStatus("Login successful", "success");
+loginBtn.textContent = "Login Successful";
+
+setTimeout(() => {
+  window.location.href = "dashboard.html";
+}, 1000);
 
       } catch (err) {
         console.error(err);
