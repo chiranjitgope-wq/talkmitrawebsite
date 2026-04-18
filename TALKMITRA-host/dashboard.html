@@ -113,6 +113,17 @@
       display: none;
     }
 
+    .success-box {
+      margin-top: 12px;
+      background: rgba(34, 197, 94, 0.14);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      display: none;
+    }
+
     .section {
       display: none;
       padding: 16px;
@@ -206,30 +217,6 @@
       color: #e2e8f0;
     }
 
-    .profile-grid {
-      display: grid;
-      gap: 10px;
-    }
-
-    .profile-field {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 12px 14px;
-    }
-
-    .profile-label {
-      font-size: 12px;
-      color: #94a3b8;
-      margin-bottom: 5px;
-    }
-
-    .profile-value {
-      font-size: 15px;
-      color: #fff;
-      word-break: break-word;
-    }
-
     .status-row {
       display: flex;
       gap: 10px;
@@ -310,6 +297,12 @@
       width: 100%;
     }
 
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b, #facc15);
+      color: #111827;
+      width: 100%;
+    }
+
     .activity-list {
       display: flex;
       flex-direction: column;
@@ -381,6 +374,238 @@
       color: #fff;
       background: rgba(255,255,255,0.08);
     }
+
+    .profile-top-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .profile-avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .profile-avatar {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(250,204,21,0.9);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .profile-avatar-btn {
+      font-size: 11px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .profile-top-info {
+      flex: 1;
+    }
+
+    .profile-top-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .profile-top-sub {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .profile-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .profile-tab-btn {
+      padding: 10px 8px;
+      border: none;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .profile-tab-btn.active {
+      background: rgba(250,204,21,0.18);
+      color: #fff;
+      border: 1px solid rgba(250,204,21,0.25);
+    }
+
+    .profile-panel {
+      display: none;
+    }
+
+    .profile-panel.active {
+      display: block;
+    }
+
+    .profile-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .profile-field {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .profile-label {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+
+    .profile-value {
+      font-size: 15px;
+      color: #fff;
+      word-break: break-word;
+    }
+
+    .profile-input,
+    .profile-textarea,
+    .profile-select {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 11px 12px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .profile-input[disabled],
+    .profile-textarea[disabled],
+    .profile-select[disabled] {
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
+
+    .profile-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .gold-card {
+      background: linear-gradient(135deg, rgba(245,158,11,0.26), rgba(250,204,21,0.16));
+      border: 1px solid rgba(250,204,21,0.24);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .gold-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fde68a;
+      margin-bottom: 8px;
+    }
+
+    .gold-sub {
+      color: #fef3c7;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .benefit-list {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .benefit-item {
+      font-size: 13px;
+      color: #fff7cc;
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .ref-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .ref-code-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+
+    .ref-code {
+      font-size: 15px;
+      font-weight: 700;
+      color: #facc15;
+      word-break: break-word;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .mini-card span {
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    .help-text {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    .hidden-file {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -399,12 +624,14 @@
       <div class="badge" id="welcomeBadge">Welcome Host</div>
       <h1>Hello, <span id="heroHostName">Host</span></h1>
       <p>
-        Manage your profile, check chat & call stats, and control your host status from one place.
+        Manage your profile, check chat & call stats, control your host status and grow faster with premium and referrals.
       </p>
 
       <div class="warning-box" id="approvalWarning">
         Your account is pending admin approval. Some features may stay limited until approval.
       </div>
+
+      <div class="success-box" id="topSuccessBox"></div>
 
       <div class="chip-row">
         <div class="chip" id="planChip">Plan: Free</div>
@@ -571,62 +798,191 @@
     <div class="section glass-card" id="profileSection">
       <h2 class="section-title">Profile</h2>
       <p class="section-subtitle">
-        Your host profile information and account details.
+        Manage your details, upgrade to premium and grow with referrals.
       </p>
 
-      <div class="profile-grid">
-        <div class="profile-field">
-          <div class="profile-label">Display Name</div>
-          <div class="profile-value" id="profileName">-</div>
+      <div class="profile-top-card">
+        <div class="profile-avatar-wrap">
+          <img src="assets/logo.png" alt="Profile" class="profile-avatar" id="profileAvatar">
+          <button class="profile-avatar-btn" id="uploadPhotoBtn">Change Photo</button>
+          <input type="file" id="profileImageInput" class="hidden-file" accept="image/*">
         </div>
 
-        <div class="profile-field">
-          <div class="profile-label">Email</div>
-          <div class="profile-value" id="profileEmail">-</div>
-        </div>
+        <div class="profile-top-info">
+          <div class="profile-top-name" id="profileHeaderName">Host</div>
+          <div class="profile-top-sub" id="profileHeaderSub">Free Plan • Pending Approval • Offline</div>
 
-        <div class="profile-field">
-          <div class="profile-label">Phone</div>
-          <div class="profile-value" id="profilePhone">-</div>
-        </div>
-
-        <div class="profile-field">
-          <div class="profile-label">Age</div>
-          <div class="profile-value" id="profileAge">-</div>
-        </div>
-
-        <div class="profile-field">
-          <div class="profile-label">Gender</div>
-          <div class="profile-value" id="profileGender">-</div>
-        </div>
-
-        <div class="profile-field">
-          <div class="profile-label">City</div>
-          <div class="profile-value" id="profileCity">-</div>
-        </div>
-
-        <div class="profile-field">
-          <div class="profile-label">Bio</div>
-          <div class="profile-value" id="profileBio">-</div>
-        </div>
-
-        <div class="profile-field">
-          <div class="profile-label">Plan</div>
-          <div class="profile-value" id="profilePlan">-</div>
-        </div>
-
-        <div class="profile-field">
-          <div class="profile-label">Approval Status</div>
-          <div class="profile-value" id="profileApproval">-</div>
+          <div class="chip-row">
+            <div class="chip" id="profilePlanChip">Free</div>
+            <div class="chip" id="profileApprovalChip">Pending</div>
+            <div class="chip" id="profileOnlineChip">Offline</div>
+          </div>
         </div>
       </div>
 
-      <div class="action-row">
-        <button class="btn btn-secondary" id="profileRefreshBtn">Refresh Profile</button>
+      <div class="profile-tabs">
+        <button class="profile-tab-btn active" data-ptab="detailsPanel">Details</button>
+        <button class="profile-tab-btn" data-ptab="upgradePanel">Upgrade</button>
+        <button class="profile-tab-btn" data-ptab="referPanel">Refer</button>
+        <button class="profile-tab-btn" data-ptab="earningsPanel">Earnings</button>
       </div>
 
-      <div class="action-row" style="margin-top:12px;">
-        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+      <div class="success-box" id="profileSuccessBox"></div>
+
+      <div class="profile-panel active" id="detailsPanel">
+        <div class="profile-grid">
+          <div class="profile-field">
+            <div class="profile-label">Display Name</div>
+            <input type="text" id="editDisplayName" class="profile-input" disabled>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Email</div>
+            <input type="text" id="editEmail" class="profile-input" disabled>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Phone</div>
+            <input type="text" id="editPhone" class="profile-input" disabled>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Age</div>
+            <input type="number" id="editAge" class="profile-input" disabled>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Gender</div>
+            <select id="editGender" class="profile-select" disabled>
+              <option value="">Select gender</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">City</div>
+            <input type="text" id="editCity" class="profile-input" disabled>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Bio</div>
+            <textarea id="editBio" class="profile-textarea" disabled></textarea>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Plan</div>
+            <div class="profile-value" id="profilePlan">-</div>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Approval Status</div>
+            <div class="profile-value" id="profileApproval">-</div>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Join Date</div>
+            <div class="profile-value" id="profileJoinDate">-</div>
+          </div>
+
+          <div class="profile-field">
+            <div class="profile-label">Host ID</div>
+            <div class="profile-value" id="profileHostId">-</div>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary" id="editProfileBtn">Edit Profile</button>
+          <button class="btn btn-primary" id="saveProfileBtn" style="display:none;">Save Changes</button>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary" id="cancelEditBtn" style="display:none;">Cancel</button>
+          <button class="btn btn-secondary" id="profileRefreshBtn">Refresh Profile</button>
+        </div>
+      </div>
+
+      <div class="profile-panel" id="upgradePanel">
+        <div class="gold-card">
+          <div class="gold-title">Upgrade Premium ₹499</div>
+          <div class="gold-sub">
+            One time premium upgrade for better earning, more visibility and stronger profile ranking.
+          </div>
+
+          <div class="benefit-list">
+            <div class="benefit-item">60% earning share</div>
+            <div class="benefit-item">Top listing priority</div>
+            <div class="benefit-item">VIP / Premium badge</div>
+            <div class="benefit-item">More visibility and more user reach</div>
+          </div>
+
+          <button class="btn btn-gold" id="upgradePremiumBtn">Upgrade to Premium ₹499</button>
+          <div class="help-text">
+            Upgrade button abhi UI mode me hai. Payment integration baad me connect karenge.
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-panel" id="referPanel">
+        <div class="ref-card">
+          <h3 style="margin-bottom:6px;">Refer & Earn</h3>
+          <p class="small" style="color:#cbd5e1; line-height:1.6;">
+            Aapke referral ne <strong>Premium Upgrade ₹499</strong> liya tabhi <strong>₹150 reward</strong> milega.
+          </p>
+
+          <div class="ref-code-box">
+            <div>
+              <div class="profile-label">Your Referral Code</div>
+              <div class="ref-code" id="refCodeText">TALKMITRA-HOST</div>
+            </div>
+            <button class="btn btn-secondary" style="flex:none;padding:10px 12px;" id="copyRefBtn">Copy</button>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini-card">
+              <strong>₹750</strong>
+              <span>5 Premium referrals</span>
+            </div>
+            <div class="mini-card">
+              <strong>₹1500</strong>
+              <span>10 Premium referrals</span>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button class="btn btn-primary" id="shareRefBtn">Share Referral Message</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-panel" id="earningsPanel">
+        <div class="mini-grid" style="margin-top:0;">
+          <div class="mini-card">
+            <strong id="earningTodayValue">₹154</strong>
+            <span>Today Earning</span>
+          </div>
+          <div class="mini-card">
+            <strong id="earningTotalValue">₹5420</strong>
+            <span>Total Earning</span>
+          </div>
+          <div class="mini-card">
+            <strong id="earningChatValue">₹2240</strong>
+            <span>Chat Earning</span>
+          </div>
+          <div class="mini-card">
+            <strong id="earningCallValue">₹3180</strong>
+            <span>Call Earning</span>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary" id="supportBtn">Support</button>
+        </div>
+
+        <div class="action-row" style="margin-top:12px;">
+          <button class="btn btn-danger" id="logoutBtn">Logout</button>
+        </div>
       </div>
     </div>
   </div>
@@ -648,8 +1004,13 @@
 
     const navButtons = document.querySelectorAll(".nav-btn");
     const sections = document.querySelectorAll(".section");
+    const profileTabButtons = document.querySelectorAll(".profile-tab-btn");
+    const profilePanels = document.querySelectorAll(".profile-panel");
 
     const approvalWarning = document.getElementById("approvalWarning");
+    const topSuccessBox = document.getElementById("topSuccessBox");
+    const profileSuccessBox = document.getElementById("profileSuccessBox");
+
     const welcomeBadge = document.getElementById("welcomeBadge");
     const heroHostName = document.getElementById("heroHostName");
     const planChip = document.getElementById("planChip");
@@ -659,7 +1020,32 @@
     const onlinePill = document.getElementById("onlinePill");
     const toggleOnlineBtn = document.getElementById("toggleOnlineBtn");
 
+    const editProfileBtn = document.getElementById("editProfileBtn");
+    const saveProfileBtn = document.getElementById("saveProfileBtn");
+    const cancelEditBtn = document.getElementById("cancelEditBtn");
+    const profileRefreshBtn = document.getElementById("profileRefreshBtn");
+    const refreshBtn = document.getElementById("refreshBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const supportBtn = document.getElementById("supportBtn");
+    const upgradePremiumBtn = document.getElementById("upgradePremiumBtn");
+    const copyRefBtn = document.getElementById("copyRefBtn");
+    const shareRefBtn = document.getElementById("shareRefBtn");
+    const uploadPhotoBtn = document.getElementById("uploadPhotoBtn");
+    const profileImageInput = document.getElementById("profileImageInput");
+
     let hostData = null;
+    let authUserEmail = "";
+    let isEditMode = false;
+    let tempImagePreview = null;
+
+    function showMessage(el, text) {
+      el.textContent = text;
+      el.style.display = "block";
+      setTimeout(() => {
+        el.style.display = "none";
+        el.textContent = "";
+      }, 2500);
+    }
 
     function showSection(sectionId) {
       sections.forEach((section) => section.classList.remove("active"));
@@ -675,8 +1061,22 @@
       });
     });
 
+    profileTabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        profileTabButtons.forEach((b) => b.classList.remove("active"));
+        profilePanels.forEach((panel) => panel.classList.remove("active"));
+
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.ptab).classList.add("active");
+      });
+    });
+
     function safeValue(value) {
       return value === null || value === undefined || value === "" ? "-" : value;
+    }
+
+    function inputValue(value) {
+      return value === null || value === undefined ? "" : value;
     }
 
     function capitalizeText(value) {
@@ -684,11 +1084,41 @@
       return String(value).charAt(0).toUpperCase() + String(value).slice(1);
     }
 
+    function formatDate(dateString) {
+      if (!dateString) return "-";
+      const d = new Date(dateString);
+      if (isNaN(d.getTime())) return "-";
+      return d.toLocaleDateString();
+    }
+
+    function buildReferralCode(data) {
+      const name = (data.display_name || "host").replace(/\s+/g, "").toUpperCase().slice(0, 6);
+      const idPart = (data.id || "000000").replace(/-/g, "").slice(0, 6).toUpperCase();
+      return `TM-${name}-${idPart}`;
+    }
+
+    function setEditMode(enable) {
+      isEditMode = enable;
+
+      document.getElementById("editDisplayName").disabled = !enable;
+      document.getElementById("editPhone").disabled = !enable;
+      document.getElementById("editAge").disabled = !enable;
+      document.getElementById("editGender").disabled = !enable;
+      document.getElementById("editCity").disabled = !enable;
+      document.getElementById("editBio").disabled = !enable;
+
+      saveProfileBtn.style.display = enable ? "block" : "none";
+      cancelEditBtn.style.display = enable ? "block" : "none";
+      editProfileBtn.style.display = enable ? "none" : "block";
+    }
+
     function updateOnlineUI(isOnline) {
       onlineChip.textContent = isOnline ? "Online" : "Offline";
       onlinePill.textContent = isOnline ? "Online" : "Offline";
       onlinePill.className = "status-pill " + (isOnline ? "status-online" : "status-offline");
       toggleOnlineBtn.textContent = isOnline ? "Go Offline" : "Go Online";
+
+      document.getElementById("profileOnlineChip").textContent = isOnline ? "Online" : "Offline";
     }
 
     function updateApprovalUI(isApproved) {
@@ -697,10 +1127,13 @@
       approvalPill.className = "status-pill " + (isApproved ? "status-approved" : "status-pending");
       approvalWarning.style.display = isApproved ? "none" : "block";
       welcomeBadge.textContent = isApproved ? "Approved Host" : "Pending Approval";
+
+      document.getElementById("profileApprovalChip").textContent = isApproved ? "Approved" : "Pending";
     }
 
     function fillProfile(data, authEmail = "") {
       hostData = data;
+      authUserEmail = authEmail || authUserEmail;
 
       const displayName = safeValue(data.display_name);
       const plan = capitalizeText(data.plan || "free");
@@ -708,6 +1141,9 @@
       const isOnline = !!(data.online || data.is_online);
       const chatRate = data.chat_rate ?? 2;
       const callRate = data.call_rate ?? 5;
+      const joinDate = formatDate(data.created_at);
+      const referralCode = buildReferralCode(data);
+      const profileImg = data.profile_image || "assets/logo.png";
 
       heroHostName.textContent = displayName;
       planChip.textContent = "Plan: " + plan;
@@ -724,18 +1160,30 @@
       document.getElementById("chatTodayEarning").textContent = "₹" + (Number(chatRate) * 32);
       document.getElementById("callTodayEarning").textContent = "₹" + (Number(callRate) * 18);
 
-      document.getElementById("profileName").textContent = displayName;
-      document.getElementById("profileEmail").textContent = authEmail || safeValue(data.email);
-      document.getElementById("profilePhone").textContent = safeValue(data.phone);
-      document.getElementById("profileAge").textContent = safeValue(data.age);
-      document.getElementById("profileGender").textContent = capitalizeText(data.gender);
-      document.getElementById("profileCity").textContent = safeValue(data.city);
-      document.getElementById("profileBio").textContent = safeValue(data.bio);
+      document.getElementById("profileHeaderName").textContent = displayName;
+      document.getElementById("profileHeaderSub").textContent = `${plan} Plan • ${approved ? "Approved" : "Pending"} • ${isOnline ? "Online" : "Offline"}`;
+      document.getElementById("profilePlanChip").textContent = plan;
+
       document.getElementById("profilePlan").textContent = plan;
       document.getElementById("profileApproval").textContent = approved ? "Approved" : "Pending";
+      document.getElementById("profileJoinDate").textContent = joinDate;
+      document.getElementById("profileHostId").textContent = safeValue(data.id);
+
+      document.getElementById("editDisplayName").value = inputValue(data.display_name);
+      document.getElementById("editEmail").value = authEmail || inputValue(data.email);
+      document.getElementById("editPhone").value = inputValue(data.phone);
+      document.getElementById("editAge").value = inputValue(data.age);
+      document.getElementById("editGender").value = inputValue(data.gender);
+      document.getElementById("editCity").value = inputValue(data.city);
+      document.getElementById("editBio").value = inputValue(data.bio);
+
+      document.getElementById("refCodeText").textContent = referralCode;
+
+      document.getElementById("profileAvatar").src = profileImg;
 
       updateApprovalUI(approved);
       updateOnlineUI(isOnline);
+      setEditMode(false);
 
       localStorage.setItem("hostData", JSON.stringify(data));
     }
@@ -750,6 +1198,7 @@
       }
 
       const user = authData.user;
+      authUserEmail = user.email || "";
 
       const { data: hostProfile, error: profileError } = await sb
         .from("hosts")
@@ -765,7 +1214,7 @@
         return;
       }
 
-      fillProfile(hostProfile, user.email || "");
+      fillProfile(hostProfile, authUserEmail);
     }
 
     async function toggleOnlineStatus() {
@@ -798,11 +1247,73 @@
         hostData.online = nextStatus;
         hostData.is_online = nextStatus;
         updateOnlineUI(nextStatus);
+        document.getElementById("profileHeaderSub").textContent = `${capitalizeText(hostData.plan || "free")} Plan • ${hostData.approved ? "Approved" : "Pending"} • ${nextStatus ? "Online" : "Offline"}`;
         localStorage.setItem("hostData", JSON.stringify(hostData));
+
         toggleOnlineBtn.disabled = false;
       } catch (err) {
         console.error(err);
         toggleOnlineBtn.disabled = false;
+      }
+    }
+
+    async function saveProfile() {
+      try {
+        const { data: authData } = await sb.auth.getUser();
+        const user = authData?.user;
+        if (!user || !hostData) return;
+
+        saveProfileBtn.disabled = true;
+        saveProfileBtn.textContent = "Saving...";
+
+        const payload = {
+          display_name: document.getElementById("editDisplayName").value.trim(),
+          phone: document.getElementById("editPhone").value.trim(),
+          age: document.getElementById("editAge").value ? Number(document.getElementById("editAge").value) : null,
+          gender: document.getElementById("editGender").value || null,
+          city: document.getElementById("editCity").value.trim(),
+          bio: document.getElementById("editBio").value.trim()
+        };
+
+        if (!payload.display_name) {
+          alert("Display name required");
+          saveProfileBtn.disabled = false;
+          saveProfileBtn.textContent = "Save Changes";
+          return;
+        }
+
+        if (tempImagePreview) {
+          payload.profile_image = tempImagePreview;
+        }
+
+        const { data: updatedRows, error } = await sb
+          .from("hosts")
+          .update(payload)
+          .eq("user_id", user.id)
+          .select("*");
+
+        if (error) {
+          alert(error.message);
+          saveProfileBtn.disabled = false;
+          saveProfileBtn.textContent = "Save Changes";
+          return;
+        }
+
+        if (updatedRows && updatedRows[0]) {
+          fillProfile(updatedRows[0], authUserEmail);
+        } else {
+          await fetchLatestProfile();
+        }
+
+        tempImagePreview = null;
+        showMessage(profileSuccessBox, "Profile updated successfully");
+        saveProfileBtn.disabled = false;
+        saveProfileBtn.textContent = "Save Changes";
+      } catch (err) {
+        console.error(err);
+        alert("Something went wrong while saving profile.");
+        saveProfileBtn.disabled = false;
+        saveProfileBtn.textContent = "Save Changes";
       }
     }
 
@@ -817,10 +1328,84 @@
       window.location.href = "login.html";
     }
 
-    document.getElementById("refreshBtn").addEventListener("click", fetchLatestProfile);
-    document.getElementById("profileRefreshBtn").addEventListener("click", fetchLatestProfile);
-    document.getElementById("toggleOnlineBtn").addEventListener("click", toggleOnlineStatus);
-    document.getElementById("logoutBtn").addEventListener("click", logoutHost);
+    function handleCopyReferral() {
+      const code = document.getElementById("refCodeText").textContent.trim();
+      navigator.clipboard.writeText(code).then(() => {
+        showMessage(profileSuccessBox, "Referral code copied");
+      }).catch(() => {
+        alert("Copy failed. Please copy manually.");
+      });
+    }
+
+    function handleShareReferral() {
+      const code = document.getElementById("refCodeText").textContent.trim();
+      const text = `Join TalkMitra as a host with my referral code: ${code}. Premium upgrade ₹499 lene par referral reward applicable hota hai.`;
+
+      if (navigator.share) {
+        navigator.share({ text });
+      } else {
+        navigator.clipboard.writeText(text).then(() => {
+          showMessage(profileSuccessBox, "Referral message copied");
+        }).catch(() => {
+          alert(text);
+        });
+      }
+    }
+
+    function openSupport() {
+      window.open("https://wa.me/919862787368", "_blank");
+    }
+
+    function openUpgradeInfo() {
+      alert("Premium Upgrade ₹499\\n\\nBenefits:\\n- 60% earning share\\n- Top listing priority\\n- VIP badge\\n- More profile visibility\\n\\nPayment button integration baad me connect karenge.");
+    }
+
+    function previewProfileImage(file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        tempImagePreview = e.target.result;
+        document.getElementById("profileAvatar").src = tempImagePreview;
+        showMessage(profileSuccessBox, "Photo preview updated. Save changes to keep it.");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    editProfileBtn.addEventListener("click", () => {
+      setEditMode(true);
+      document.querySelector('[data-ptab="detailsPanel"]').click();
+    });
+
+    cancelEditBtn.addEventListener("click", () => {
+      if (hostData) {
+        fillProfile(hostData, authUserEmail);
+      }
+      tempImagePreview = null;
+      setEditMode(false);
+    });
+
+    saveProfileBtn.addEventListener("click", saveProfile);
+    refreshBtn.addEventListener("click", fetchLatestProfile);
+    profileRefreshBtn.addEventListener("click", fetchLatestProfile);
+    toggleOnlineBtn.addEventListener("click", toggleOnlineStatus);
+    logoutBtn.addEventListener("click", logoutHost);
+    supportBtn.addEventListener("click", openSupport);
+    upgradePremiumBtn.addEventListener("click", openUpgradeInfo);
+    copyRefBtn.addEventListener("click", handleCopyReferral);
+    shareRefBtn.addEventListener("click", handleShareReferral);
+
+    uploadPhotoBtn.addEventListener("click", () => {
+      if (!isEditMode) {
+        showMessage(profileSuccessBox, "Edit Profile first to change photo");
+        return;
+      }
+      profileImageInput.click();
+    });
+
+    profileImageInput.addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      previewProfileImage(file);
+    });
 
     (async function initDashboard() {
       const savedHost = localStorage.getItem("hostData");
@@ -834,6 +1419,7 @@
       }
 
       await fetchLatestProfile();
+      showMessage(topSuccessBox, "Dashboard ready");
     })();
   </script>
 </body>
