@@ -1458,3 +1458,99 @@ select.modal-input option {
     font-size: 12px;
   }
 }
+
+/* =========================
+FORCE SMALL HOST CARD
+========================= */
+
+.host-grid {
+  gap: 10px !important;
+}
+
+.host-card {
+  padding: 8px 10px !important;
+  border-radius: 20px !important;
+}
+
+.host-card-inner {
+  grid-template-columns: 62px 1fr !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.host-avatar-col {
+  gap: 4px !important;
+}
+
+.host-image-wrap {
+  width: 54px !important;
+  height: 54px !important;
+  border-radius: 16px !important;
+}
+
+.host-image {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 14px !important;
+}
+
+.live-dot {
+  width: 11px !important;
+  height: 11px !important;
+}
+
+.host-status {
+  padding: 4px 8px !important;
+  font-size: 10px !important;
+}
+
+.rating-line {
+  font-size: 11px !important;
+}
+
+.host-top-row {
+  margin-bottom: 4px !important;
+}
+
+.host-name-line {
+  margin-bottom: 1px !important;
+}
+
+.host-top-row h4 {
+  font-size: 14px !important;
+}
+
+.host-age,
+.host-language,
+.host-location {
+  font-size: 11px !important;
+}
+
+.badge-row {
+  gap: 4px !important;
+  margin-bottom: 5px !important;
+}
+
+.badge {
+  padding: 3px 6px !important;
+  font-size: 9px !important;
+}
+
+.price-row {
+  gap: 5px !important;
+  margin-bottom: 6px !important;
+}
+
+.price-pill {
+  padding: 4px 7px !important;
+  font-size: 10px !important;
+}
+
+.action-row {
+  gap: 6px !important;
+}
+
+.card-btn {
+  padding: 8px 8px !important;
+  font-size: 11px !important;
+}
