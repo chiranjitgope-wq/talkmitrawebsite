@@ -1554,3 +1554,116 @@ FORCE SMALL HOST CARD
   padding: 8px 8px !important;
   font-size: 11px !important;
 }
+
+/* =========================
+SMALL FEATURED EXPERTS + PROFILE COLOR FIX
+========================= */
+
+/* FEATURED EXPERTS SECTION CHHOTA */
+.filters-wrap {
+  margin-bottom: 10px !important;
+}
+
+.section-head h3 {
+  font-size: 20px !important;
+  margin-bottom: 3px !important;
+}
+
+.section-head p {
+  font-size: 11px !important;
+  margin-bottom: 8px !important;
+}
+
+.filter-scroll {
+  gap: 6px !important;
+}
+
+.filter-group {
+  gap: 6px !important;
+}
+
+.filter-btn,
+.status-btn {
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  border-radius: 999px !important;
+}
+
+/* ONLY PROFILE PAGE COLOR FIX */
+.profile-page .profile-topbar,
+.profile-page .profile-hero,
+.profile-page .profile-section,
+.profile-page .profile-stat-card {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid rgba(120, 130, 160, 0.14) !important;
+  box-shadow: 0 10px 24px rgba(90, 95, 130, 0.08) !important;
+}
+
+.profile-page .profile-title h2,
+.profile-page .profile-main-info h1,
+.profile-page .profile-section-header h3,
+.profile-page .profile-detail-left h4,
+.profile-page .quick-link-card h4 {
+  color: #202533 !important;
+}
+
+.profile-page .profile-title p,
+.profile-page .profile-main-info p,
+.profile-page .profile-detail-value,
+.profile-page .profile-stat-card p {
+  color: #5f6678 !important;
+}
+
+.profile-page .profile-detail-item,
+.profile-page .quick-link-card {
+  background: #f7f8fc !important;
+  border: 1px solid rgba(120, 130, 160, 0.12) !important;
+}
+
+.profile-page .profile-stat-card h3,
+.profile-page .highlight-value {
+  color: #2f6fff !important;
+}
+
+/* PROFILE KE ANDAR BUTTONS CLEAR */
+.profile-page .profile-action-btn.gold {
+  background: linear-gradient(135deg, #4f8cff, #2f6fff) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 22px rgba(47, 111, 255, 0.20) !important;
+}
+
+.profile-page .profile-action-btn.dark {
+  background: #eef3ff !important;
+  color: #2f4b8f !important;
+  border: 1px solid rgba(47, 111, 255, 0.16) !important;
+}
+
+.profile-page .profile-action-btn.red {
+  background: #fff1f1 !important;
+  color: #d94444 !important;
+  border: 1px solid rgba(217, 68, 68, 0.16) !important;
+}
+
+.profile-page .top-badge {
+  background: #eef3ff !important;
+  color: #2f6fff !important;
+  border: 1px solid rgba(47, 111, 255, 0.16) !important;
+}
+
+/* MOBILE */
+@media (max-width: 540px) {
+  .section-head h3 {
+    font-size: 18px !important;
+  }
+
+  .section-head p {
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .filter-btn,
+  .status-btn {
+    padding: 7px 10px !important;
+    font-size: 11px !important;
+  }
+}
