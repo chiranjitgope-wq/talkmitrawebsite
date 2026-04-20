@@ -10,6 +10,7 @@ function $(id) {
 function showToast(message) {
   const toast = $("toast");
   if (!toast) return;
+
   toast.textContent = message;
   toast.classList.remove("hidden");
 
@@ -30,6 +31,12 @@ function closeModal(id) {
   modal.classList.add("hidden");
 }
 
+function openChatPage(hostName, hostImage) {
+  const url = `chat.html?name=${encodeURIComponent(hostName)}&img=${encodeURIComponent(hostImage)}`;
+  window.location.href = url;
+}
+
+/* FAQ */
 document.querySelectorAll(".faq-question").forEach((btn) => {
   btn.addEventListener("click", () => {
     const answer = btn.nextElementSibling;
@@ -47,6 +54,7 @@ document.querySelectorAll(".faq-question").forEach((btn) => {
   });
 });
 
+/* MODALS */
 const openLoginBtn = $("openLogin");
 const openRegisterBtn = $("openRegister");
 const walletNavBtn = $("walletNav");
@@ -107,6 +115,7 @@ document.querySelectorAll(".modal").forEach((modal) => {
   });
 });
 
+/* WALLET DEMO */
 let walletBalance = 20;
 let selectedRechargeAmount = 0;
 const walletBalanceEl = $("walletBalance");
@@ -118,6 +127,7 @@ function updateWalletBalance() {
   if (walletBalanceEl) {
     walletBalanceEl.textContent = walletBalance;
   }
+
   if (walletBalanceTopEl) {
     walletBalanceTopEl.textContent = walletBalance.toFixed(2);
   }
@@ -150,6 +160,7 @@ if (applyRechargeBtn) {
 
 updateWalletBalance();
 
+/* LOGIN / REGISTER */
 const loginSubmitBtn = $("loginSubmit");
 const registerSubmitBtn = $("registerSubmit");
 
@@ -244,6 +255,7 @@ if (registerSubmitBtn) {
   });
 }
 
+/* FILTERS */
 const genderButtons = document.querySelectorAll(".filter-btn");
 const statusButtons = document.querySelectorAll(".status-btn");
 const hostGrid = $("hostGrid");
@@ -312,6 +324,7 @@ statusButtons.forEach((btn) => {
   });
 });
 
+/* HOST ACTIONS */
 function bindHostActionButtons() {
   document.querySelectorAll(".chat-btn").forEach((btn) => {
     if (!btn.dataset.bound) {
@@ -330,11 +343,11 @@ function bindHostActionButtons() {
       });
     }
   });
-}
 
   document.querySelectorAll(".call-btn").forEach((btn) => {
     if (!btn.dataset.bound) {
       btn.dataset.bound = "true";
+
       btn.addEventListener("click", () => {
         showToast("Voice call feature coming soon");
       });
@@ -344,6 +357,7 @@ function bindHostActionButtons() {
   document.querySelectorAll(".offline-btn").forEach((btn) => {
     if (!btn.dataset.bound) {
       btn.dataset.bound = "true";
+
       btn.addEventListener("click", () => {
         showToast("Host is offline right now");
       });
@@ -351,9 +365,7 @@ function bindHostActionButtons() {
   });
 }
 
-bindHostActionButtons();
-applyHostFilters();
-
+/* LIVE HOSTS */
 async function loadLiveHosts() {
   console.log("loadLiveHosts started");
 
@@ -372,8 +384,12 @@ async function loadLiveHosts() {
   }
 
   if (!hosts || !hosts.length) {
+    bindHostActionButtons();
+    applyHostFilters();
     return;
   }
+
+  hostGrid.innerHTML = "";
 
   hosts.forEach((host) => {
     const status = host.online ? "Online" : "Offline";
@@ -452,8 +468,7 @@ async function loadLiveHosts() {
   applyHostFilters();
 }
 
+/* INIT */
+bindHostActionButtons();
+applyHostFilters();
 loadLiveHosts();
-function openChatPage(hostName, hostImage) {
-  const url = `chat.html?name=${encodeURIComponent(hostName)}&img=${encodeURIComponent(hostImage)}`;
-  window.location.href = url;
-}
