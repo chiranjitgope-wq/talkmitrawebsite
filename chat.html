@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalkMitra Chat</title>
+  <link rel="stylesheet" href="chat.css" />
+</head>
+<body>
+  <div class="chat-bg"></div>
+
+  <div class="chat-page">
+    <header class="chat-topbar">
+      <div class="topbar-left">
+        <button class="icon-btn" id="backBtn">←</button>
+
+        <div class="host-mini-profile">
+          <div class="host-avatar-wrap">
+            <img src="assets/riya.jpg" alt="Host" class="host-avatar" id="chatHostImage" />
+            <span class="online-dot"></span>
+          </div>
+
+          <div class="host-meta">
+            <h2 id="chatHostName">Riya</h2>
+            <p>Online now</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="icon-btn" id="moreBtn">⋯</button>
+    </header>
+
+    <section class="chat-info-row">
+      <div class="info-chip">
+        <span class="chip-label">Rate</span>
+        <strong id="chatRate">₹2/min</strong>
+      </div>
+
+      <div class="info-chip">
+        <span class="chip-label">Time</span>
+        <strong id="chatTimer">00:00</strong>
+      </div>
+
+      <div class="info-chip">
+        <span class="chip-label">Wallet</span>
+        <strong>₹<span id="walletBalanceLabel">0</span></strong>
+      </div>
+    </section>
+
+    <div class="chat-notice">
+      Personal contact details cannot be shared in chat.
+    </div>
+
+    <main class="chat-messages" id="chatMessages">
+      <div class="day-pill">Today</div>
+
+      <div class="message-row host">
+        <img src="assets/riya.jpg" alt="Host" class="message-avatar" />
+        <div class="message-bubble host-bubble">
+          Hello 👋 Welcome to TalkMitra
+          <span class="message-time">10:20 AM</span>
+        </div>
+      </div>
+
+      <div class="message-row user">
+        <div class="message-bubble user-bubble">
+          Hi, kaise ho?
+          <span class="message-time">10:21 AM</span>
+        </div>
+      </div>
+
+      <div class="message-row host">
+        <img src="assets/riya.jpg" alt="Host" class="message-avatar" />
+        <div class="message-bubble host-bubble">
+          Main theek hoon, aap batao?
+          <span class="message-time">10:22 AM</span>
+        </div>
+      </div>
+    </main>
+
+    <div class="typing-line" id="typingLine">Connected chat session</div>
+
+    <section class="chat-bottom">
+      <div class="message-box">
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Type your message..."
+          maxlength="500"
+        />
+        <button class="send-btn" id="sendBtn">Send</button>
+      </div>
+
+      <button class="end-chat-btn" id="endChatBtn">End Chat</button>
+    </section>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+     <script src="chat.js"></script>
+</body>
+</html>
