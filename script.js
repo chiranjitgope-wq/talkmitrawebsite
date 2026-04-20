@@ -316,11 +316,21 @@ function bindHostActionButtons() {
   document.querySelectorAll(".chat-btn").forEach((btn) => {
     if (!btn.dataset.bound) {
       btn.dataset.bound = "true";
+
       btn.addEventListener("click", () => {
-        showToast("Chat feature coming soon");
+        const card = btn.closest(".host-card");
+
+        const hostName =
+          card.querySelector("h4")?.textContent || "Host";
+
+        const hostImage =
+          card.querySelector("img")?.getAttribute("src") || "assets/riya.jpg";
+
+        openChatPage(hostName, hostImage);
       });
     }
   });
+}
 
   document.querySelectorAll(".call-btn").forEach((btn) => {
     if (!btn.dataset.bound) {
@@ -443,3 +453,7 @@ async function loadLiveHosts() {
 }
 
 loadLiveHosts();
+function openChatPage(hostName, hostImage) {
+  const url = `chat.html?name=${encodeURIComponent(hostName)}&img=${encodeURIComponent(hostImage)}`;
+  window.location.href = url;
+}
